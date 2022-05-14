@@ -1,0 +1,794 @@
+<resources>
+    <string name="app_name">تسجيل يتيم</string>
+    <string name="yatim_selection_criteria">معايير اختيار الأيتام</string>
+
+    <string name="head_of_the_family">بيانات رب الأسرة</string>
+    <string name="please_select_guardian_of_the_orphan">ولي أمر اليتيم</string>
+    <string name="mother">الأم</string>
+    <string name="other">أخرى</string>
+    <string name="refugee_status">حالة اللجوء</string>
+    <string name="mother_name">اسم الأم</string>
+    <string name="refugee">لاجئ</string>
+    <string name="non_refugee">غير لاجئ</string>
+    <string name="mother_date_of_birth">تارخ ميلاد الأم</string>
+
+    <string name="mother_marital_status">الحالة الاجتماعية للأم</string>
+    <string-array name="marital_status">
+        <item name="choose">اختر</item>
+        <item name="widow">أرملة(تعيش مع الأيتام)</item>
+        <item name="married">متزوجة(تعيش مع الأيتام)</item>
+        <item name="left_orphans">تركت الأيتام</item>
+        <item name="deceased">متوفية</item>
+    </string-array>
+
+    <string name="marital_status">الحالة الاجتماعية</string>
+    <string-array name="family_situation">
+        <item>اختر</item>
+        <item>أرمل</item>
+        <item>متزوج</item>
+        <item>أعزب</item>
+        <item>متوفي</item>
+    </string-array>
+
+    <string name="educational_level">المستوي التعليمي للأم</string>
+    <string-array name="educational_level">
+        <item name="choose">اختر</item>
+        <item name="university">جامعي</item>
+        <item name="secondary">ثانوي</item>
+        <item name="intermediate">متوسط</item>
+        <item name="acquaintance">ملمة</item>
+        <item name="illiteracy">أمية</item>
+        <item name="joined">ملتحقة</item>
+        <item name="complete_education">ترغب بإكمال تعليمها</item>
+    </string-array>
+
+    <string name="university_education">التعليم الجامعي للأم</string>
+    <string-array name="university_education">
+        <item name="choose">اختر</item>
+        <item name="master">ماجستير</item>
+        <item name="bachelor">بكالوريس</item>
+        <item name="diploma">دبلوم</item>
+    </string-array>
+
+    <string name="specialization">التخصص</string>
+    <string name="graduation_year">عام التخرج</string>
+    <string name="average">المعدل</string>
+
+    <string name="parents_name">اسم ولي الأمر</string>
+    <string name="parents_id">رقم الهوية</string>
+    <string name="parents_date_of_birth">تاريخ ميلاد ولي الأمر</string>
+    <string name="relationship_with_the_orphan">علاقة ولي الامر باليتيم</string>
+
+
+    <string name="housing_condition">حالة السكن</string>
+    <string name="space">المساحة(م2)</string>
+    <string name="house_location">موقع البيت من المبني</string>
+    <string name="people_for_rooms">عدد الأفراد لعدد الغرف</string>
+    <string name="rooms_number">عدد الغرف</string>
+    <string name="member_number">عدد أفراد الأسرة</string>
+
+    <string name="housing_type">نوع السكن</string>
+    <string-array name="housing_type">
+        <item>اختر</item>
+        <item>منزل</item>
+        <item>شقة</item>
+        <item>خيمة</item>
+        <item>مأوي مؤقت</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string-array name="house_location">
+        <item>اختر</item>
+        <item>أرضى</item>
+        <item>دور أول</item>
+        <item>دور ثاني</item>
+        <item>دور ثالث</item>
+        <item>دور رابع</item>
+        <item>دور خامس</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="roof_type">نوع السقف</string>
+    <string-array name="roof_type">
+        <item>اختر</item>
+        <item>باطون</item>
+        <item>معدني</item>
+        <item>أسبست</item>
+        <item>خشب</item>
+        <item>قماش</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="property">الملكية</string>
+    <string-array name="property">
+        <item>اختر</item>
+        <item>ملك</item>
+        <item>إيجار</item>
+        <item>مع الأهل</item>
+        <item>مع غير الأهل</item>
+        <item>أرض وقف</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="wall_type">نوع الجدران</string>
+    <string-array name="wall_type">
+        <item>اختر</item>
+        <item>باطون</item>
+        <item>معدني</item>
+        <item>أسبست</item>
+        <item>خشب</item>
+        <item>قماش</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="floor_type">نوع الأرضية</string>
+    <string-array name="floor_type">
+        <item>اختر</item>
+        <item>بلاط</item>
+        <item>باطون</item>
+        <item>رملية</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="windows_case">حالة الشبابيك</string>
+    <string-array name="windows_case">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+        <item>بحاجة لترميم</item>
+    </string-array>
+
+    <string name="doors_case">حالة الأبواب</string>
+    <string-array name="doors_case">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+        <item>بحاجة لترميم</item>
+    </string-array>
+
+    <string name="kitchen_condition">حالة المطبخ الصحية</string>
+    <string-array name="kitchen_condition">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+        <item>بحاجة لترميم</item>
+    </string-array>
+
+    <string name="bathroom_condition">حالة الحمام الصحية</string>
+    <string-array name="bathroom_condition">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+        <item>بحاجة لترميم</item>
+    </string-array>
+
+    <string name="housing_condition_in_general">حالة السكن بشكل عام</string>
+    <string-array name="housing_condition_in_general">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+        <item>بحاجة لترميم</item>
+    </string-array>
+
+    <string name="improvement_needs">احتياجات للتحسين</string>
+    <string-array name="improvement_needs">
+        <item>اختر</item>
+        <item>ترميم</item>
+        <item>صيانة</item>
+        <item>أثاث</item>
+        <item>أجهزة</item>
+        <item>إنشاء</item>
+        <item>ترميم خاص بإحتياجات المعاقين</item>
+    </string-array>
+
+    <string name="furniture_needs">احتياجات من الأثاث</string>
+    <string-array name="furniture_needs">
+        <item>اختر</item>
+        <item>فراشي</item>
+        <item>كراسي</item>
+        <item>طاولة</item>
+        <item>خزانة ملابس</item>
+        <item>أدوات مطبخ</item>
+    </string-array>
+
+    <string name="hardware_needs">احتياجات من الأجهزة</string>
+    <string-array name="hardware_needs">
+        <item>اختر</item>
+        <item>ثلاجة</item>
+        <item>غسالة</item>
+        <item>فرن غاز</item>
+        <item>غاز</item>
+        <item>جرة</item>
+        <item>مروحة</item>
+        <item>مدفأة</item>
+    </string-array>
+
+    <string name="lighting">الإنارة</string>
+    <string name="ventilation">التهوية</string>
+    <string name="electricity">شبكة الكهرباء</string>
+    <string name="Water_network">شبكة المياه</string>
+    <string name="alternative_electricity">كهربا بديلة</string>
+    <string name="Sewage">الصرف الصحي</string>
+
+    <string name="excellent">ممتازة</string>
+    <string name="good">جيدة</string>
+    <string name="medium">متوسطة</string>
+    <string name="bad">سيئة</string>
+    <string name="very_bad">سيئة جدا</string>
+    <string name="need_restoration">بحاجة لترميم</string>
+    <string name="need_repair">بحاجة لإصلاح</string>
+    <string name="exist">يوجد</string>
+    <string name="not_exist">لا يوجد</string>
+
+    <string name="water_hygiene_hygienicPractices">المياه و النظافة و الممارسات الصحية</string>
+    <string name="tank_capacity_for_household_consumption">سعة الخزانات للاستهلاك المنزلي باللتر</string>
+    <string name="number">العدد</string>
+    <string name="drinking_water_tanks_capacity">سعة خزانات مياه الشرب باللتر</string>
+    <string name="Liter">لتر</string>
+
+    <string name="domestic_water_source">مصدر مياه الاستهلاك المنزلي</string>
+    <string-array name="domestic_water_source">
+        <item>اختر</item>
+        <item>شبكة البلدية</item>
+        <item>حنفية عامة</item>
+        <item>بئر زراعي/منزلي</item>
+        <item>غير متصلة</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="source_of_drinking_cookingWater">مصدر مياه الشرب و الطبخ</string>
+    <string-array name="source_of_drinking_cookingWater">
+        <item>اختر</item>
+        <item>مياه بلدية</item>
+        <item>فلتر مياه</item>
+        <item>بئر زراعي/منزلي</item>
+        <item>شاحنة مياه</item>
+        <item>من الدكان</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="number_of_municipal_days_water_arrived">عدد أيام وصل مياه البلدية</string>
+    <string-array name="number_of_municipal_days_water_arrived">
+        <item>اختر</item>
+        <item>يوم واحد</item>
+        <item>2-3 يوم</item>
+        <item>3-7 يوم</item>
+        <item>غير متصلة</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="do_he_need_any_of_the_following">هل يحتاج أي من التالى</string>
+    <string-array name="do_he_need_any_of_the_following">
+        <item>اختر</item>
+        <item>فلتر مياه</item>
+        <item>موتور مياه</item>
+        <item>سخان شمسي</item>
+        <item>خزان</item>
+        <item>سخان مياه(قيزر,أتمور)</item>
+    </string-array>
+
+    <string name="condition_of_cleanliness_arrangement">حالة النظافة و ترتيب المسكن و مرافقه بشكل عام</string>
+    <string-array name="condition_of_cleanliness_arrangement">
+        <item>اختر</item>
+        <item>ممتازة</item>
+        <item>جيدة</item>
+        <item>متوسطة</item>
+        <item>سيئة</item>
+        <item>سيئة جدا</item>
+    </string-array>
+
+
+    <string name="economic_aspect">الجانب الاقتصادي :</string>
+    <string name="head_family_work">هل يعمل رب الاسرة</string>
+    <string name="work_nature">طبيعة العمل</string>
+    <string name="average_monthly_income">متوسط الدخل الشهري بالشيكل</string>
+    <string name="family_debts">هل لدى الأسرة ديون؟</string>
+    <string name="accumulated_college_loans">هل هناك قروض جامعية متراكمة؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+
+    <string-array name="family_income_sources">
+        <item>اختر</item>
+        <item>مصادر دخل الأسرة</item>
+        <item>رب الأسرة لا يعمل</item>
+        <item>راتب أو معاش</item>
+        <item>شؤون MoSD</item>
+        <item>مساعدات وكالة الغوث</item>
+        <item>كفالات</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string-array name="family_financial_situation">
+        <item>اختر</item>
+        <item>الوضع المالي للأسرة</item>
+        <item>ممتاز</item>
+        <item>جيد</item>
+        <item>متوسط</item>
+        <item>سئ</item>
+        <item>سئ جدا</item>
+    </string-array>
+
+    <string-array name="family_property">
+        <item>اختر</item>
+        <item>ممتلكات الأسرة</item>
+        <item>ثروة حيوانية</item>
+        <item>أرض سكنية</item>
+        <item>ماكينات</item>
+        <item>دفيئة زراعية</item>
+        <item>أخرى</item>
+    </string-array>
+
+
+    <string name="basic_information">المعلومات الأساسية لليتيم</string>
+    <string name="add_yatims">إضافة يتيم</string>
+    <string name="yatim_name">اسم اليتيم رباعي</string>
+    <string name="yatim_date_of_birth">تاريخ الميلاد</string>
+    <string name="gender">الجنس</string>
+    <string name="father_death_date">تاريخ وفاة الأب</string>
+    <string name="cause_of_death">سبب الوفاة</string>
+    <string name="age_at_death">السن عند الوفاة</string>
+    <string name="job">المهنة</string>
+    <string name="previous_income">الدخل السابق</string>
+    <string name="inheritance_or_pension">الإرث او المعاش</string>
+    <string name="mobile_number">رقم الجوال</string>
+    <string name="add_mobile_number">إضافة رقم جوال</string>
+    <string name="conservation">المحافظة/تفاصيل العنوان</string>
+    <!--    <string name="address_details">تفاصيل العنوان</string>-->
+
+
+    <string name="yatim_health_status">الحالة الصحية لليتيم</string>
+    <string name="height">الطول</string>
+    <string name="weight">الوزن</string>
+    <string name="has_a_lock">لديه تأمين</string>
+    <string name="status_since">الحالة منذ</string>
+    <string name="birth">الولادة</string>
+    <string name="disease_name">اسم المرض</string>
+    <string name="mental_disorder_type">نوع الاضطراب النفسي</string>
+    <string name="health_condition">الحالة الصحية</string>
+    <string name="healthy">معافي</string>
+    <string name="unhealthy">غير معافي</string>
+    <string name="male">ذكر</string>
+    <string name="female">أنثى</string>
+
+    <string name="body_health">صحة الجسم</string>
+    <string-array name="body_health">
+        <item>اختر</item>
+        <item>طبيعي</item>
+        <item>وزن زائد</item>
+        <item>مفرط الزيادة</item>
+        <item>يعاني سوء تغذية</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="nature_of_case">طبيعة الحالة</string>
+    <string-array name="nature_of_case">
+        <item>اختر</item>
+        <item>مرض</item>
+        <item>إعاقة</item>
+        <item>إصابة</item>
+        <item>حالة نفسية</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="disability_type">نوع الاعاقة</string>
+    <string-array name="disability_type">
+        <item>اختر</item>
+        <item>عقلية</item>
+        <item>حركية</item>
+        <item>بصرية</item>
+        <item>سمعية</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="special_needs">احتياجات خاصة</string>
+    <string-array name="special_needs">
+        <item>اختر</item>
+        <item>أدوية</item>
+        <item>تدخل جراحي معقد</item>
+        <item>جهاز طبي مساعد</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="handicapped_needs">احتياجات المعاقين</string>
+    <string-array name="handicapped_needs">
+        <item>اختر</item>
+        <item>حفاظات</item>
+        <item>فرشة طبية</item>
+        <item>كرسى متحرك</item>
+        <item>سماعة طبية</item>
+        <item>طرف صناعي</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="teeth_health">صحة الأسنان</string>
+    <string-array name="teeth_health">
+        <item>اختر</item>
+        <item>سليمة</item>
+        <item>غير سليمة</item>
+        <item>تحتاج تدخل بسيط</item>
+        <item>تحتاج تدخل معقد</item>
+        <item>تحتاج تقويم</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="psychological_statefor_child">الحالة النفسية للطفل</string>
+    <string-array name="psychological_statefor_child">
+        <item>اختر</item>
+        <item>طبيعي</item>
+        <item>يعاني من اضرابات نفسية</item>
+        <item>يعاني من مشاكل سلوكية</item>
+        <item>مشاكل في عقد الصداقات</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="needs">الاحتياجات</string>
+    <string-array name="needs">
+        <item>اختر</item>
+        <item>أدوية</item>
+        <item>متابعة أخصائي</item>
+        <item>تحويل</item>
+        <item>أخرى</item>
+    </string-array>
+
+
+    <string name="yatim_educational_status">الحالة التعليمية لليتيم</string>
+    <string name="educational_status">الحالة التعليمية</string>
+    <string name="enrolled">ملتحق</string>
+    <string name="not_enrolled">غير ملتحق</string>
+    <string name="school_university_name">اسم المدرسة/الجامعة</string>
+    <string name="address">عنوان المدرسة</string>
+    <string name="period">الفترة</string>
+    <string name="morning">صباحي</string>
+    <string name="evening">مسائي</string>
+    <string name="grade_level">الصف/المستوى</string>
+    <string name="Specialist">التخصص</string>
+    <string name="educational_avarge">المعدل</string>
+    <string name="Consistent">ملتزم بالدوام</string>
+    <string name="read_write">يستطيع القراءة و الكتابة</string>
+
+    <string name="reason_for_not_joining">سبب عدم الإلتحاق</string>
+    <string-array name="reason_for_not_joining">
+        <item>اختر</item>
+        <item>دون سن المدرسة</item>
+        <item>مريض</item>
+        <item>يعمل</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="stage">المرحلة</string>
+    <string-array name="stage">
+        <item>اختر</item>
+        <item>روضة</item>
+        <item>مدرسة</item>
+        <item>توجيهي</item>
+        <item>كلية</item>
+        <item>جامعة</item>
+        <item>تعليم مهني</item>
+        <item>تدريب في مكان العمل</item>
+        <item>تعليم الكبار</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="school_type">نوع المدرسة</string>
+    <string-array name="school_type">
+        <item>اختر</item>
+        <item>وكالة</item>
+        <item>حكومة</item>
+        <item>خاص</item>
+        <item>خيري</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <!--    <string name="study_period">الفترة الدراسية</string>-->
+    <!--    <string-array name="study_period">-->
+    <!--        <item>اختر</item>-->
+    <!--        <item>صباحى</item>-->
+    <!--    </string-array>-->
+
+    <string name="reason_for_non_compliance">سبب عدم الإلتزام</string>
+    <string-array name="reason_for_non_compliance">
+        <item>اختر</item>
+        <item>متسرب</item>
+        <item>قيود اجتماعية</item>
+        <item>صعوبة بالوصول</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="reach_school">طريقة الوصول للمدرسة</string>
+    <string-array name="reach_school">
+        <item>اختر</item>
+        <item>سيرا على الأقدام</item>
+        <item>باص المدرسة</item>
+        <item>دراجة</item>
+        <item>مواصلات عامة</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="level_of_academic_achievement">مستوى التحصيل الدراسي</string>
+    <string-array name="level_of_academic_achievement">
+        <item>اختر</item>
+        <item>ممتاز</item>
+        <item>جيد جدا</item>
+        <item>جيد</item>
+        <item>مقبول</item>
+        <item>ضعيف</item>
+    </string-array>
+
+    <string name="educational_special_needs">احتياجات خاصة</string>
+    <string-array name="educational_special_needs">
+        <item>اختر</item>
+        <item>دروس تقوية</item>
+        <item>رسوم جامعة</item>
+        <item>كتب جامعية</item>
+        <item>مواصلات</item>
+        <item>استخراج شهادة</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="materials_need_strengthening">مواد بحاجة لتقوية</string>
+    <string-array name="materials_need_strengthening">
+        <item>اختر</item>
+        <item>عربي</item>
+        <item>انجليزي</item>
+        <item>رياضيات</item>
+        <item>كيمياء</item>
+        <item>فيزياء</item>
+        <item>أحياء</item>
+        <item>علوم</item>
+        <item>أخرى</item>
+    </string-array>
+
+
+    <string name="yatim_desires_inclinations">رغبات و ميول </string>
+    <string name="favorite_food">الأكلة المفضلة</string>
+    <string name="future_wish">أمنية المستقبل</string>
+    <string name="pet">هل لدى الطفل حيوان أليف</string>
+    <string name="immediate_needs">هل لدى الطفل أى احتياجات آنية الذكر</string>
+
+    <string name="talent">المواهب</string>
+    <string-array name="talent">
+        <item>اختر</item>
+        <item>فنية</item>
+        <item>رياضية</item>
+        <item>دينية</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="interests">الاهتمامات</string>
+    <string-array name="interests">
+        <item>اختر</item>
+        <item>الزراعة</item>
+        <item>تربية الحيوانات</item>
+        <item>تربية الطيور</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="skills">المهارات</string>
+    <string-array name="skills">
+        <item>اختر</item>
+        <item>أعمال يدوية</item>
+        <item>إلكترونية</item>
+        <item>كهرباء</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="wish">الرغبات</string>
+    <string-array name="wish">
+        <item>اختر</item>
+        <item>يرغب بإتمام تعليمه</item>
+        <item>يرغب بالتحويل للتدريب المهني</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="responsibilities">المسئوليات</string>
+    <string-array name="responsibilities">
+        <item>اختر</item>
+        <item>التنظيف</item>
+        <item>الطبخ</item>
+        <item>الاهتمام بالإخوة اللأصغر</item>
+        <item>أخرى</item>
+    </string-array>
+
+    <string name="family_members">أفراد الأسرة</string>
+    <string name="father_birth_date">تاريخ ميلاد الأب</string>
+    <!--    <string name="family_members">أفراد الأسرة (بإستثناء الطفل اليتيم)</string>-->
+
+
+    <string name="photo_iD">صورة هوية</string>
+    <string name="certificate_of_deceased">شهادة المتوفي</string>
+    <string name="birth_certificate">شهادة ميلاد</string>
+    <string name="picture">صورة شخصية</string>
+    <string name="custody_declaration">إقرار حضانة</string>
+    <string name="guardianship_image">صورة وصاية</string>
+    <string name="school_certificate_image">صورة شهادة المدرسة</string>
+    <string name="salary_slip_if_any">قسيمة راتب إن وجد</string>
+
+
+    <string name="governorate">المحافظة</string>
+    <string-array name="city_list">
+        <item>اختر</item>
+        <item>الشمال</item>
+        <item>غزة</item>
+        <item>الوسطى</item>
+        <item>خانيونس</item>
+        <item>رفح</item>
+    </string-array>
+
+
+    <string name="north">الشمال</string>
+    <string-array name="north_list">
+        <item>اختر</item>
+        <item>بيت لاهيا</item>
+        <item>جباليا</item>
+        <item>حي الشعوت</item>
+        <item>حي الصفطاوي</item>
+        <item>مدينة الشيخ زايد</item>
+        <item>التوام</item>
+    </string-array>
+
+
+    <string name="gaza">غزة</string>
+    <string-array name="gaza_list">
+        <item>اختر</item>
+        <item>الشاطئ</item>
+        <item>التفاح</item>
+        <item>الدرج</item>
+        <item>الرمال الجنوبي</item>
+        <item>الرمال الشمالي</item>
+        <item>الشيخ رضوان</item>
+        <item>الصبرة</item>
+        <item>الشجاعية</item>
+        <item>النصر</item>
+        <item>حي الزيتون</item>
+    </string-array>
+
+
+    <string name="central">الوسطى</string>
+    <string-array name="central_list">
+        <item>اختر</item>
+        <item>البريج</item>
+        <item>الزوايدة</item>
+        <item>المغازي</item>
+        <item>النصيرات</item>
+        <item>دير البلح</item>
+    </string-array>
+
+
+    <string name="khanyounes">خانيونس</string>
+    <string-array name="khanyounes_list">
+        <item>اختر</item>
+        <item>الأوروبي</item>
+        <item>بطن السمين</item>
+        <item>حي النمساوي</item>
+        <item>حي الهولندي</item>
+        <item>حي الياباني</item>
+        <item>الزنة</item>
+        <item>السطر الشرقي</item>
+        <item>السطر الغربي</item>
+        <item>السكه</item>
+        <item>الشيخ ناصر</item>
+        <item>القرارة</item>
+        <item>الفخاري</item>
+        <item>الكتيبة</item>
+        <item>المشروع</item>
+        <item>المعسكر</item>
+        <item>المواصي</item>
+        <item>بني سهيلا</item>
+        <item>جوردة العقاد</item>
+        <item>حارة زعرب</item>
+        <item>حي الأمل</item>
+        <item>حي المنارة</item>
+        <item>خانيونس البلد</item>
+        <item>خزاعة</item>
+        <item>عبسان الجديدة</item>
+        <item>عبسان الكبيرة</item>
+        <item>قاع القريين</item>
+        <item>قيزان النجار</item>
+        <item>قيزان رشوان</item>
+        <item>مدينة حمد</item>
+        <item>معا</item>
+        <item>ميراج</item>
+    </string-array>
+
+
+    <string name="rafah">رفح</string>
+    <string-array name="rafah_list">
+        <item>اختر</item>
+        <item>البرازيل</item>
+        <item>الحي السعودي</item>
+        <item>الشابورة</item>
+        <item>الشوكة</item>
+        <item>الصيامات</item>
+        <item>الطريق الشرقية</item>
+        <item>العبور</item>
+        <item>القرية السويدية</item>
+        <item>المشروع _ رفح</item>
+        <item>المطار</item>
+        <item>المواصي</item>
+        <item>النصر البيوك</item>
+        <item>حي السلام</item>
+        <item>حي البراهمة</item>
+        <item>حي التنور</item>
+        <item>حي الجنينة</item>
+        <item>حي السلطان</item>
+        <item>حي النصر</item>
+        <item>حي كندا</item>
+        <item>خربة العدس</item>
+        <item>رفح _ البلد</item>
+        <item>رفح الجنوبية</item>
+        <item>رفح الشرقية</item>
+        <item>رفح الغربية</item>
+        <item>مخيم بدر</item>
+        <item>مستشفى الكويتي</item>
+        <item>مشروع عامر</item>
+        <item>مصبح</item>
+        <item>مفترق النيرب</item>
+        <item>ميراج</item>
+        <item>يبنا</item>
+    </string-array>
+
+
+    <string name="title_activity_home">HomeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">التالى</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="add_yatim">الرجاء إضافة الأيتام الذين تنطبق عليهم البيانات السابقة حسب الأولوية</string>
+    <string name="add_family">الرجاء إضافة بيانات أفراد الأسرة</string>
+    <string name="be_patient">الرجاء التحلي بالصبر أثناء تعبئة الاستبانة</string>
+    <string name="member_name">الاسم</string>
+    <string name="member_date_of_birth">تاريخ الميلاد</string>
+    <string name="relationship_with_yatim">علاقته باليتيم</string>
+    <string name="Classroom">الصف الدراسي</string>
+    <string name="family_situation">الحالة الاجتماعية</string>
+    <string name="health_status">الحالة الصحية</string>
+    <string name="guaranteed_by_islamic_relief">مكفول بالاغاثة الاسلامية</string>
+    <string name="add">إضافة</string>
+    <string name="family_members_member">إضافة بيانات الأسرة</string>
+    <string name="please_fill_data">تأكد من تعبئة جميع الحقول</string>
+    <string name="email_address">الايميل</string>
+    <string name="password">كلمة المرور</string>
+    <string name="signin">تسجيل الدخول</string>
+    <string name="forgot_password">نسيت كلمة المرور</string>
+    <string name="don_not_have_an_account">ليس لديك حساب ؟</string>
+    <string name="create_new_now">إنشاء حساب جديد</string>
+    <string name="signup">تسجيل جديد</string>
+    <string name="already_have_an_account">لديك حساب بالفعل ؟</string>
+    <string name="login_to_account">تسجيل الدخول</string>
+    <string name="add_attachments_fragment">إضافة المرفقات</string>
+
+    <string name="ending_questionnaire">إنهاء الاستبانة</string>
+    <string name="add_attachments">الرجاء إضافة الأوراق الثبوتية</string>
+    <string name="add_family_member">اضافة فرد جديد</string>
+    <string name="no_area_for_this_city">لا يوجد مناطق في هذه المدينة</string>
+    <string name="area">المنطقة</string>
+    <string name="please_at_least_yatim">الرجاء اضافة يتيم على الاقل</string>
+
+
+    <string name="one">1 - كفالة طفل واحد من الأسر التي تتكون من فرد أو إثنان أو ثلاثة.</string>
+    <string name="two">2 - يتم إختيار يتيمان في حال كان عدد أفراد الأسرة يتكون من 4 أو 5 أو 6 أفراد</string>
+    <string name="three">3 - إذا كانت الأسرة تتكون من 7 أفراد فأكثر يمكن اختيار 3 أفراد</string>
+    <string name="four">تسجيل اليتيم على هذا النظام لا يعني بالضرورة اختيارهم ضمن البرنامج و ستخضع المعلومات المقدمة للفحص و التحيقيق الميداني و بناءاً عليه يتم اختيار من تنطبق عليهم الشروط</string>
+
+</resources>

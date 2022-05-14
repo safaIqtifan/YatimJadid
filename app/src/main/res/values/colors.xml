@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#00a652</color>
+    <color name="purple_700">#01954A</color>
+    <color name="teal_200">#C6ED1B24</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="light_black">#252424</color>
+    <color name="lights_black">#8E8888</color>
+    <color name="light_black2">#655C5C</color>
+    <color name="gray1">#655C5C</color>
+    <color name="green">#04B55B</color>
+    <color name="button">#74B973</color>
+    <color name="background">#C1E4D1</color>
+    <color name="darkblue">#11293F</color>
+    <color name="blue">#25435E</color>
+    <color name="bluebtnColor">#289BE8</color>
+    <color name="gry">#CABEBE</color>
+    <color name="black_trans">#90000000</color>
+    <color name="black_tran">#000000</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="create_farm_bg">#32707070</color>
+
+<!--    <color name="colorPrimary">#74B973</color>-->
+<!--    <color name="colorPrimaryDark">#62A361</color>-->
+<!--    <color name="colorAccent">#289BE8</color>-->
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/transparent
+    </color>
+
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402044378550",
+    "project_id": "yatim-jadid",
+    "storage_bucket": "yatim-jadid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402044378550:android:a9ede3f7113190bee8f517",
+        "android_client_info": {
+          "package_name": "com.example.yatimjadid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402044378550-37tsrkgofnnhhli5e14btjs8d3366723.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnyTdX_LyNuZU2XaUOWGouwEH7cqRObpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402044378550-37tsrkgofnnhhli5e14btjs8d3366723.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

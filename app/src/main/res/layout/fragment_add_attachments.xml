@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AddAttachmentsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/photoIDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/photo_iD"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/photo_iD"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/certificateOfDeceasedTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/certificate_of_deceased"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/certificateOfDeceased"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/birthCertificateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/birth_certificate"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/birth_certificate"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/personalPictureTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/picture"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/personal_picture"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/custodyDeclarationTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/custody_declaration"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/custody_declaration"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/guardianshipTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/guardianship_image"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/guardianship_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/schoolCertificateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/school_certificate_image"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/school_certificate_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/salarySlipIfAnyTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableEnd="@drawable/black_add"
+                android:text="@string/salary_slip_if_any"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/salary_slip_if_any"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/profile"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/next_second_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

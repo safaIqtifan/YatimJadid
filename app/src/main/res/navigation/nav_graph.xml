@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/AddYatimsFragment">
+
+    <fragment
+        android:id="@+id/yatimSelectionCriteriaFragment"
+        android:name="com.example.yatimjadid.YatimSelectionCriteriaFragment"
+        tools:layout="@layout/fragment_yatim_selection_criteria">
+        <action
+            android:id="@+id/action_yatimSelectionCriteriaFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.yatimjadid.FirstFragment"
+        android:label="@string/head_of_the_family"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.yatimjadid.SecondFragment"
+        android:label="@string/housing_condition"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_WaterHygieneFragment"
+            app:destination="@id/WaterHygieneFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/WaterHygieneFragment"
+        android:name="com.example.yatimjadid.WaterHygieneFragment"
+        android:label="@string/water_hygiene_hygienicPractices"
+        tools:layout="@layout/fragment_water_hygiene">
+
+        <action
+            android:id="@+id/action_WaterHygieneFragment_to_FamilyMembersFragment"
+            app:destination="@id/FamilyMembersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddYatimsFragment"
+        android:name="com.example.yatimjadid.NewYatimsFragment"
+        android:label="@string/add_yatims"
+        tools:layout="@layout/fragment_new_yatims">
+
+        <action
+            android:id="@+id/action_AddYatimsFragment_to_BasicInformationFragment"
+            app:destination="@id/BasicInformationFragment" />
+        <action
+            android:id="@+id/action_AddYatimsFragment_to_yatimSelectionCriteriaFragment"
+            app:destination="@id/yatimSelectionCriteriaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BasicInformationFragment"
+        android:name="com.example.yatimjadid.addYatim.BasicInformationFragment"
+        android:label="@string/basic_information"
+        tools:layout="@layout/fragment_basic_information">
+
+        <action
+            android:id="@+id/action_BasicInformationFragment_to_YatimHealthConditionFragment"
+            app:destination="@id/YatimHealthConditionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/YatimHealthConditionFragment"
+        android:name="com.example.yatimjadid.addYatim.YatimHealthConditionFragment"
+        android:label="@string/yatim_health_status"
+        tools:layout="@layout/fragment_yatim_health_condition">
+
+        <action
+            android:id="@+id/action_YatimHealthConditionFragment_to_YatimEducationalStatusFragment"
+            app:destination="@id/YatimEducationalStatusFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/YatimEducationalStatusFragment"
+        android:name="com.example.yatimjadid.addYatim.YatimEducationalStatusFragment"
+        android:label="@string/educational_status"
+        tools:layout="@layout/fragment_yatim_educational_status">
+
+        <action
+            android:id="@+id/action_YatimEducationalStatusFragment_to_YatimDesiresInclinationsFragment"
+            app:destination="@id/YatimDesiresInclinationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/YatimDesiresInclinationsFragment"
+        android:name="com.example.yatimjadid.addYatim.YatimDesiresInclinationsFragment"
+        android:label="@string/yatim_desires_inclinations"
+        tools:layout="@layout/fragment_yatim_desires_inclinations">
+
+        <action
+            android:id="@+id/action_YatimDesiresInclinationsFragment_to_AddAttachmentsFragment"
+            app:destination="@id/AddAttachmentsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FamilyMembersFragment"
+        android:name="com.example.yatimjadid.FamilyMembersFragment"
+        android:label="@string/family_members"
+        tools:layout="@layout/fragment_family_members">
+
+<!--        <action-->
+<!--            android:id="@+id/action_FamilyMembersFragment_to_FamilyMemberDataFragment"-->
+<!--            app:destination="@id/FamilyMemberDataFragment" />-->
+        <action
+            android:id="@+id/action_FamilyMembersFragment_to_AddYatimsFragment"
+            app:destination="@id/AddYatimsFragment" />
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/FamilyMemberDataFragment"-->
+<!--        android:name="com.example.yatimjadid.FamilyMemberDataFragment"-->
+<!--        android:label="@string/family_members_member"-->
+<!--        tools:layout="@layout/fragment_family_member_data">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_FamilyMemberDataFragment_to_FamilyMembersFragment"-->
+<!--            app:destination="@id/FamilyMembersFragment" />-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/AddAttachmentsFragment"
+        android:name="com.example.yatimjadid.AddAttachmentsFragment"
+        android:label="@string/add_attachments_fragment"
+        tools:layout="@layout/fragment_add_attachments">
+        <action
+            android:id="@+id/action_AddAttachmentsFragment_to_AddYatimsFragment"
+            app:destination="@id/AddYatimsFragment" />
+    </fragment>
+
+</navigation>
