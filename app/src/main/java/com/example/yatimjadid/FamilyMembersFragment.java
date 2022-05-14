@@ -53,7 +53,7 @@ public class FamilyMembersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        familyMembersArrayList = DBFunction.getFamilyMembers(requireActivity());
+        familyMembersArrayList = UtiltApp.getFamilyMembers(requireActivity());
 //        familyMembersArrayList = new ArrayList<>();
 
         addMemberLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -70,7 +70,7 @@ public class FamilyMembersFragment extends Fragment {
 
                 adapter.notifyDataSetChanged();
                 showHideToolbarAddButton();
-                DBFunction.setFamilyMembers(requireActivity(), familyMembersArrayList);
+                UtiltApp.setFamilyMembers(requireActivity(), familyMembersArrayList);
             }
         });
 
@@ -88,7 +88,7 @@ public class FamilyMembersFragment extends Fragment {
         adapter = new FamilyMemberAdapter(getActivity(), familyMembersArrayList, new DataCallBack() {
             @Override
             public void Result(Object obj, String type, Object otherData) {
-//                familyMembersArrayList = DBFunction.getFamilyMembers(requireActivity());
+//                familyMembersArrayList = UtiltApp.getFamilyMembers(requireActivity());
 
                 if (type.equals("delete")) {
                     showHideToolbarAddButton();
@@ -150,7 +150,7 @@ public class FamilyMembersFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-//        DBFunction.setFamilyMembers(requireActivity(), familyMembersArrayList);
+//        UtiltApp.setFamilyMembers(requireActivity(), familyMembersArrayList);
     }
 
     @Override

@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/AddYatimsFragment">
+    app:startDestination="@id/yatimSelectionCriteriaFragment">
 
     <fragment
         android:id="@+id/yatimSelectionCriteriaFragment"
         android:name="com.example.yatimjadid.YatimSelectionCriteriaFragment"
+        android:label="@string/yatim_selection_criteria"
         tools:layout="@layout/fragment_yatim_selection_criteria">
         <action
             android:id="@+id/action_yatimSelectionCriteriaFragment_to_FirstFragment"

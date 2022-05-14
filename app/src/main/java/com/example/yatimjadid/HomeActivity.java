@@ -41,12 +41,12 @@ public class HomeActivity extends BaseActivity {
 //            }
 //        });
 
-        binding.toolbarBackBtn.setOnClickListener(view -> {
-            onBackPressed();
-        });
+//        binding.toolbarBackBtn.setOnClickListener(view -> {
+//            onBackPressed();
+//        });
 
         binding.toolbarExitBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, SigninActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
             startActivity(intent);
             finish();
         });

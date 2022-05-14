@@ -32,17 +32,12 @@ public class YatimSelectionCriteriaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.mainToolbar.setTitle("معايير اختيار الأيتام");
+//        binding.mainToolbar.setTitle("معايير اختيار الأيتام");
         binding.nextBtn.setOnClickListener(view1 -> {
 
             NavHostFragment.findNavController(YatimSelectionCriteriaFragment.this)
                     .navigate(R.id.action_yatimSelectionCriteriaFragment_to_FirstFragment );
 
-        });
-
-
-        binding.toolbarExitBtn.setOnClickListener(view1 -> {
-            
         });
 
     }

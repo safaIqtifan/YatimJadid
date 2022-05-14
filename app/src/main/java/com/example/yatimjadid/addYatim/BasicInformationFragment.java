@@ -315,7 +315,7 @@ public class BasicInformationFragment extends Fragment {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-
+//        Toast.makeText(getActivity(), "igh" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
 //        System.out.println("Log BasicInformation getYatimName " + addYatimModel.getYatimName());
         NavHostFragment.findNavController(BasicInformationFragment.this)
                 .navigate(R.id.action_BasicInformationFragment_to_YatimHealthConditionFragment, bundle);

@@ -20,20 +20,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yatimjadid.Models.AddYatimModel;
-import com.example.yatimjadid.Models.AllResolutionModels;
-import com.example.yatimjadid.addYatim.BasicInformationFragment;
 import com.example.yatimjadid.databinding.FragmentAddAttachmentsBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -41,7 +34,7 @@ public class AddAttachmentsFragment extends Fragment {
 
     private FragmentAddAttachmentsBinding binding;
 
-    AddYatimModel yatimModel;
+    AddYatimModel addYatimModel;
     //    Uri photoUri;
     Map<String, Uri> photosUriMap;
     Bundle bundle;
@@ -75,11 +68,12 @@ public class AddAttachmentsFragment extends Fragment {
         lodingBar = new ProgressDialog(getActivity());
 
         bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
-            yatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
-        } else {
-            yatimModel = new AddYatimModel();
+        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
+            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
         }
+//        else {
+//            yatimModel = new AddYatimModel();
+//        }
 
         storageRef = FirebaseStorage.getInstance().getReference();
         photosUriMap = new HashMap<>();
@@ -128,12 +122,8 @@ public class AddAttachmentsFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                lodingBar.setTitle("حفظ البيانات");
-                lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
-                lodingBar.setCanceledOnTouchOutside(false);
-                lodingBar.show();
-
                 if (!photosUriMap.containsKey(PHOTO_ID)) {
+                    lodingBar.dismiss();
                     Toast.makeText(getActivity(), "الرجاء اضافة صورة واحدة علي الأقل", Toast.LENGTH_SHORT).show();
                     // please select photo id
                     return;
@@ -230,6 +220,11 @@ public class AddAttachmentsFragment extends Fragment {
 
     private void uploadPhoto(String photoType, Uri photoUri) {
 
+        lodingBar.setTitle("جاري حفظ البيانات");
+        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+        lodingBar.setCanceledOnTouchOutside(false);
+        lodingBar.show();
+
         StorageReference imgRef = storageRef.child(Constants.ATTACHMENTS_IMAGES + "/"
                 + UUID.randomUUID().toString());
 
@@ -242,34 +237,35 @@ public class AddAttachmentsFragment extends Fragment {
                 Toast.makeText(getActivity(), "فشل برفع الصور", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(taskSnapshot -> {
-
+            lodingBar.dismiss();
             imgRef.getDownloadUrl().addOnCompleteListener(task -> {
                 lodingBar.dismiss();
                 switch (photoType) {
                     case PHOTO_ID:
-                        yatimModel.setPhotoId(task.getResult().toString());
+                        addYatimModel.setPhotoId(task.getResult().toString());
                         break;
                     case PHOTO_DECEASED_CERTIFICATE:
-                        yatimModel.setCertificateOfDeceased(task.getResult().toString());
+                        addYatimModel.setCertificateOfDeceased(task.getResult().toString());
                         break;
                     case PHOTO_BIRTH_CERTIFICATE:
-                        yatimModel.setBirthCertificate(task.getResult().toString());
+                        addYatimModel.setBirthCertificate(task.getResult().toString());
                         break;
                     case PHOTO_PERSONAL_PICTURE:
-                        yatimModel.setPersonalPicture(task.getResult().toString());
+                        addYatimModel.setPersonalPicture(task.getResult().toString());
                         break;
                     case PHOTO_GUARDIANSHIP:
-                        yatimModel.setGuardianshipImage(task.getResult().toString());
+                        addYatimModel.setGuardianshipImage(task.getResult().toString());
                         break;
                     case PHOTO_SCHOOL_CERTIFICATE:
-                        yatimModel.setSchoolCertificateImage(task.getResult().toString());
+                        addYatimModel.setSchoolCertificateImage(task.getResult().toString());
                         break;
                     case PHOTO_SALARY_SLIP_IF_ANY:
-                        yatimModel.setSalarySlipIfAny(task.getResult().toString());
+                        addYatimModel.setSalarySlipIfAny(task.getResult().toString());
                         break;
                 }
             });
-            bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, yatimModel);
+            bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//            Toast.makeText(getActivity(), "123" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(AddAttachmentsFragment.this)
                     .navigate(R.id.action_AddAttachmentsFragment_to_AddYatimsFragment, bundle);
         });

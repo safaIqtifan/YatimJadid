@@ -82,8 +82,8 @@ public class SecondFragment extends Fragment {
                 memberNumberStr = binding.memberNumberEd.getText().toString();
 
                 if (!roomsNumberStr.isEmpty()&& !memberNumberStr.isEmpty()) {
-                    int roomsNum = Integer.parseInt(binding.roomsNumberEd.getText().toString());
-                    int memberNum = Integer.parseInt(binding.memberNumberEd.getText().toString());
+                    double roomsNum = Double.parseDouble(binding.roomsNumberEd.getText().toString());
+                    double memberNum = Double.parseDouble(binding.memberNumberEd.getText().toString());
 
                     if (roomsNum > 0 && memberNum > 0) {
                         peopleForRoomsStr = String.valueOf(Math.ceil(memberNum / roomsNum));
@@ -111,8 +111,8 @@ public class SecondFragment extends Fragment {
                 memberNumberStr = binding.memberNumberEd.getText().toString();
 
                 if (!roomsNumberStr.isEmpty()&& !memberNumberStr.isEmpty()) {
-                    int roomsNum = Integer.parseInt(binding.roomsNumberEd.getText().toString());
-                    int memberNum = Integer.parseInt(binding.memberNumberEd.getText().toString());
+                    double roomsNum = Double.parseDouble(binding.roomsNumberEd.getText().toString());
+                    double memberNum = Double.parseDouble(binding.memberNumberEd.getText().toString());
 
                     if (roomsNum > 0 && memberNum > 0) {
                         peopleForRoomsStr = String.valueOf(Math.ceil(memberNum / roomsNum));

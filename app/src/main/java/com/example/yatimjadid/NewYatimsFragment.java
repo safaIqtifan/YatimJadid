@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,8 +16,6 @@ import com.example.yatimjadid.Adapter.YatimDataAdapter;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.Models.AllResolutionModels;
 import com.example.yatimjadid.databinding.FragmentNewYatimsBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,7 +44,7 @@ public class NewYatimsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        addYatimArrayList = DBFunction.getYatemData(requireActivity());
+        addYatimArrayList = UtiltApp.getYatemData(requireActivity());
         binding.rvYatim.setLayoutManager(new LinearLayoutManager(getActivity()));
         lodingBar = new ProgressDialog(getActivity());
         yatimRef = FirebaseDatabase.getInstance().getReference().child("Yatim");
@@ -73,7 +70,7 @@ public class NewYatimsFragment extends Fragment {
 
             Toast.makeText(getActivity(), yatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
             bundle.clear();
-            DBFunction.setYatimData(requireActivity(), addYatimArrayList);
+            UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
         }
 
         if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
@@ -114,6 +111,7 @@ public class NewYatimsFragment extends Fragment {
 
                 completeAddCount = 0;
                 for (AddYatimModel addYatimModel : addYatimArrayList) {
+                    addYatimModel.setMainInfoModel(allResolutionModels);
                     saveDataInfoToDatabase(addYatimModel);
                 }
             }
@@ -124,7 +122,7 @@ public class NewYatimsFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-//        DBFunction.setYatimData(requireActivity(), addYatimArrayList);
+//        UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
     }
 
     public void showHideToolbarAddButton() {
@@ -141,11 +139,8 @@ public class NewYatimsFragment extends Fragment {
     }
 
     public void saveDataInfoToDatabase(AddYatimModel yatimModel) {
-//        HashMap<String, Object> YatimMap = new HashMap<>();
-//        YatimMap.put("pid", productRandomKey);
 
         System.out.println("Log yatimModel " + yatimModel.getYatimName());
-
         yatimRef.child(yatimModel.getMobileNumber()).setValue(yatimModel, (error, ref) -> {
             if (error == null) {
 //                            Intent i = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
@@ -165,28 +160,6 @@ public class NewYatimsFragment extends Fragment {
                 Toast.makeText(getActivity(), "Error : " + message, Toast.LENGTH_SHORT).show();
             }
         });
-
-//        productRef.updateChildren(YatimMap)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//
-////                            Intent i = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
-////                            startActivity(i);
-////                            finish();
-//
-//                            lodingBar.dismiss();
-//                            Toast.makeText(getActivity(), "added Successfully", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            lodingBar.dismiss();
-//                            String message = task.getException().toString();
-//                            Toast.makeText(getActivity(), "Error : " + message, Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-
-
     }
 
     @Override

@@ -2,10 +2,21 @@ package com.example.yatimjadid.Models;
 
 import java.io.Serializable;
 
-public class AddYatimModel implements Serializable {
+public class AddYatimModel extends AllResolutionModels implements Serializable {
+
+    AllResolutionModels mainInfoModel = null;
+
+    public AllResolutionModels getMainInfoModel() {
+        return mainInfoModel;
+    }
+
+    public void setMainInfoModel(AllResolutionModels mainInfoModel) {
+        this.mainInfoModel = mainInfoModel;
+    }
 
 
-//    AllResolutionModels mainInfoModel = null;
+
+
 
     String YatimPhotoUri = "";
     String yatimName = "";

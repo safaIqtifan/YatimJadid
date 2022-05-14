@@ -117,12 +117,12 @@ public class FirstFragment extends Fragment {
                 if (i > 0) {
                     educationalLevelStr = binding.educationalLevel.getSelectedItem().toString();
                     if (educationalLevelStr.equals("جامعي") || educationalLevelStr.equals("المستوي التعليمي للأم")) {
-                        binding.universityEducation.setVisibility(View.VISIBLE);
-                        binding.specialization.setVisibility(View.VISIBLE);
+                        binding.universityEducationLy.setVisibility(View.VISIBLE);
+                        binding.specializationTextInputLayout.setVisibility(View.VISIBLE);
                         binding.specializationInfo.setVisibility(View.VISIBLE);
                     } else {
-                        binding.universityEducation.setVisibility(View.GONE);
-                        binding.specialization.setVisibility(View.GONE);
+                        binding.universityEducationLy.setVisibility(View.GONE);
+                        binding.specializationTextInputLayout.setVisibility(View.GONE);
                         binding.specializationInfo.setVisibility(View.GONE);
                     }
                 }else
@@ -257,14 +257,14 @@ public class FirstFragment extends Fragment {
             allResolutionModels.setParentsId(parentsIdStr);
             allResolutionModels.setParentsDateOfBirth(parentsDateOfBirthStr);
             allResolutionModels.setRelationshipWithTheOrphan(relationshipWithTheOrphanStr);
-
+            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
         }
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
         }
 
-        allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
+
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);

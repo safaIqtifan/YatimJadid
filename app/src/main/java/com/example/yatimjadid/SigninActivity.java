@@ -71,11 +71,11 @@ public class SigninActivity extends BaseActivity {
 
                 final EditText resetMail = new EditText(v.getContext());
                 AlertDialog.Builder passWordResetDialog = new AlertDialog.Builder(v.getContext());
-                passWordResetDialog.setTitle("Reset Password ?");
-                passWordResetDialog.setMessage("Enter your E-mail to Reset Link ");
+                passWordResetDialog.setTitle("إعادة تعيين كلمة المرور؟");
+                passWordResetDialog.setMessage("أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور ");
                 passWordResetDialog.setView(resetMail);
 
-                passWordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                passWordResetDialog.setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -83,17 +83,17 @@ public class SigninActivity extends BaseActivity {
                         fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(SigninActivity.this, "Reset Link Sent to Your Email .", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SigninActivity.this, "تم ارسال رابط اعادة تعيين كلمة السر الي بريدك الالكتروني .", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SigninActivity.this, "Error ! Reset Link is Not Sent ." + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SigninActivity.this, "خطأ ! لم يتم إرسال رابط إعادة تعيين كلمة السر ." + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 });
-                passWordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                passWordResetDialog.setNegativeButton("لا", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

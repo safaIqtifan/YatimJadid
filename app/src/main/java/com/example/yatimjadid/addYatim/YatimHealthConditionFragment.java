@@ -324,7 +324,7 @@ public class YatimHealthConditionFragment extends Fragment {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-
+//        Toast.makeText(getActivity(), "" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(YatimHealthConditionFragment.this)
                 .navigate(R.id.action_YatimHealthConditionFragment_to_YatimEducationalStatusFragment, bundle);
 

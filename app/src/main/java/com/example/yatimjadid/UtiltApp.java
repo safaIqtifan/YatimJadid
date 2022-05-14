@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-public class DBFunction {
+public class UtiltApp {
 
     private static SharedPManger sharedPManger;
 

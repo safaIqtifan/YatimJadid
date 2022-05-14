@@ -186,7 +186,7 @@ public class YatimDesiresInclinationsFragment extends Fragment {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-
+//        Toast.makeText(getActivity(), "" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(YatimDesiresInclinationsFragment.this)
                 .navigate(R.id.action_YatimDesiresInclinationsFragment_to_AddAttachmentsFragment, bundle);
     }
