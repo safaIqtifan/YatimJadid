@@ -1,5 +1,7 @@
 package com.example.yatimjadid.addYatim;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,10 @@ import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.R;
 import com.example.yatimjadid.databinding.FragmentYatimEducationalStatusBinding;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class YatimEducationalStatusFragment extends Fragment {
 
@@ -33,8 +39,12 @@ public class YatimEducationalStatusFragment extends Fragment {
     String materialsNeedStrengtheningStr = "";
 
     AddYatimModel addYatimModel;
-//    private ArrayList<SpinnerMaterialsNeedModels> spinnerMaterialsNeedModelsArrayList;
-//    private SpinnerMaterialsNeedAdapter mAdapter;
+
+    boolean[] selectedeDucationalSpecialneeds;
+    ArrayList<Integer> educationalSpecialneedsList = new ArrayList<>();
+
+    boolean[] selectedMaterialsNeedStrengthening;
+    ArrayList<Integer> materialsNeedStrengtheningList = new ArrayList<>();
 
     @Override
     public View onCreateView(
@@ -221,36 +231,127 @@ public class YatimEducationalStatusFragment extends Fragment {
             }
         });
 
-        binding.educationalSpecialNeeds.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i > 0)
-                    educationalSpecialNeedsStr = binding.educationalSpecialNeeds.getSelectedItem().toString();
-                else
-                    educationalSpecialNeedsStr = "";
-            }
+//        binding.educationalSpecialNeeds.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (i > 0)
+//                    educationalSpecialNeedsStr = binding.educationalSpecialNeeds.getSelectedItem().toString();
+//                else
+//                    educationalSpecialNeedsStr = "";
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//
+//        binding.materialsNeedStrengthening.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (i > 0)
+//                    materialsNeedStrengtheningStr = binding.materialsNeedStrengthening.getSelectedItem().toString();
+//                else
+//                    materialsNeedStrengtheningStr = "";
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        String[] educationalSpecialneedsArray = getResources().getStringArray(R.array.materials_need_strengthening);
+        selectedeDucationalSpecialneeds = new boolean[educationalSpecialneedsArray.length];
+        binding.educationalSpecialneedsTv.setOnClickListener(view1 -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    getActivity()
+            );
+            builder.setTitle("اختر");
+            builder.setMultiChoiceItems(educationalSpecialneedsArray, selectedeDucationalSpecialneeds, new DialogInterface.OnMultiChoiceClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                    if (b){
+                        educationalSpecialneedsList.add(i);
+                        Collections.sort(educationalSpecialneedsList);
+                    }else {
+                        educationalSpecialneedsList.remove(i);
+                    }
+                }
+            });
+            builder.setPositiveButton("تم", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    StringBuilder stringBuilder = new StringBuilder();
 
-            }
+                    for (int j = 0; j < educationalSpecialneedsList.size(); j++){
+                        stringBuilder.append(educationalSpecialneedsArray[educationalSpecialneedsList.get(j)]);
+
+                        if (j != educationalSpecialneedsList.size() - 1){
+                            stringBuilder.append(", ");
+                        }
+                    }
+                    binding.educationalSpecialneedsTv.setText(stringBuilder.toString());
+                }
+            });
+            builder.setNegativeButton("مسح الكل", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    for (int j = 0; j < selectedeDucationalSpecialneeds.length; j++){
+                        selectedeDucationalSpecialneeds[j] = false;
+                        educationalSpecialneedsList.clear();
+                        binding.educationalSpecialneedsTv.setText("اختر");
+                    }
+                }
+            });
+            builder.show();
         });
 
-        binding.materialsNeedStrengthening.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i > 0)
-                    materialsNeedStrengtheningStr = binding.materialsNeedStrengthening.getSelectedItem().toString();
-                else
-                    materialsNeedStrengtheningStr = "";
-            }
+        String[] materialsNeedStrengtheningArray = getResources().getStringArray(R.array.materials_need_strengthening);
+        selectedMaterialsNeedStrengthening = new boolean[materialsNeedStrengtheningArray.length];
+        binding.educationalSpecialneedsTv.setOnClickListener(view1 -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    getActivity()
+            );
+            builder.setTitle("اختر");
+            builder.setMultiChoiceItems(materialsNeedStrengtheningArray, selectedMaterialsNeedStrengthening, new DialogInterface.OnMultiChoiceClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                    if (b){
+                        materialsNeedStrengtheningList.add(i);
+                        Collections.sort(materialsNeedStrengtheningList);
+                    }else {
+                        materialsNeedStrengtheningList.remove(i);
+                    }
+                }
+            });
+            builder.setPositiveButton("تم", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    StringBuilder stringBuilder = new StringBuilder();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                    for (int j = 0; j < materialsNeedStrengtheningList.size(); j++){
+                        stringBuilder.append(materialsNeedStrengtheningArray[materialsNeedStrengtheningList.get(j)]);
 
-            }
+                        if (j != materialsNeedStrengtheningList.size() - 1){
+                            stringBuilder.append(", ");
+                        }
+                    }
+                    binding.materialsNeedStrengtheningTv.setText(stringBuilder.toString());
+                }
+            });
+            builder.setNegativeButton("مسح الكل", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    for (int j = 0; j < selectedMaterialsNeedStrengthening.length; j++){
+                        selectedMaterialsNeedStrengthening[j] = false;
+                        materialsNeedStrengtheningList.clear();
+                        binding.materialsNeedStrengtheningTv.setText("اختر");
+                    }
+                }
+            });
+            builder.show();
         });
-
 
         binding.nextEducationFragment.setOnClickListener(new View.OnClickListener() {
             @Override

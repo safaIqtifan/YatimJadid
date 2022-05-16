@@ -14,10 +14,6 @@ public class AddYatimModel extends AllResolutionModels implements Serializable {
         this.mainInfoModel = mainInfoModel;
     }
 
-
-
-
-
     String YatimPhotoUri = "";
     String yatimName = "";
     String yatimDateOfBirth = "";

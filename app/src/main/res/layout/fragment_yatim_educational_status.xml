@@ -474,6 +474,24 @@
 
                 </LinearLayout>
 
+                <!--                <TextView-->
+                <!--                    android:id="@+id/educationalSpecialneedsTv"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:text="@string/educational_special_needs"-->
+                <!--                    android:textColor="@color/black_tran"-->
+                <!--                    android:textSize="16sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/materialsNeedStrengtheningTv"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="@string/materials_need_strengthening"-->
+<!--                    android:textColor="@color/black_tran"-->
+<!--                    android:textSize="16sp" />-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -491,12 +509,21 @@
                         android:textColor="@color/black_tran"
                         android:textSize="16sp" />
 
-                    <Spinner
-                        android:id="@+id/educational_special_needs"
+                    <TextView
+                        android:id="@+id/educationalSpecialneedsTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:entries="@array/educational_special_needs" />
+                        android:text="اختر"
+                        android:textColor="@color/black_tran"
+                        android:textSize="16sp" />
+
+                    <!--                    <Spinner-->
+                    <!--                        android:id="@+id/educational_special_needs"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="2"-->
+                    <!--                        android:entries="@array/educational_special_needs" />-->
 
                 </LinearLayout>
 
@@ -517,12 +544,21 @@
                         android:textColor="@color/black_tran"
                         android:textSize="16sp" />
 
-                    <Spinner
-                        android:id="@+id/materials_need_strengthening"
+                    <TextView
+                        android:id="@+id/materialsNeedStrengtheningTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:entries="@array/materials_need_strengthening" />
+                        android:text="اختر"
+                        android:textColor="@color/black_tran"
+                        android:textSize="16sp" />
+
+                    <!--                                    <Spinner-->
+                    <!--                                        android:id="@+id/materials_need_strengthening"-->
+                    <!--                                        android:layout_width="match_parent"-->
+                    <!--                                        android:layout_height="wrap_content"-->
+                    <!--                                        android:layout_weight="2"-->
+                    <!--                                        android:entries="@array/materials_need_strengthening" />-->
 
                 </LinearLayout>
             </LinearLayout>

@@ -437,128 +437,179 @@ public class SecondFragment extends Fragment {
         if (housingTypeSpinnerStr.isEmpty()) {
             hasError = true;
             System.out.println("Log housingTypeSpinnerStr hasError");
+        }else {
+            allResolutionModels.setHousingTypeSpinner(housingTypeSpinnerStr);
         }
+
         if (binding.roomsNumberEd.getText().toString().isEmpty()) {
             hasError = true;
             System.out.println("Log roomsNumberStr hasError");
+        }else {
+            allResolutionModels.setRoomsNumber(String.valueOf(roomsNumberStr));
         }
+
         if (spaceStr.isEmpty()) {
             hasError = true;
             System.out.println("Log spaceStr hasError");
+        }else {
+            allResolutionModels.setSpace(spaceStr);
         }
+
         if (propertySpinnerStr.isEmpty()) {
             hasError = true;
             System.out.println("Log propertySpinnerStr hasError");
+        }else {
+            allResolutionModels.setPropertySpinner(propertySpinnerStr);
         }
+
         if (roofTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log roofTypeStr hasError");
+        }else {
+            allResolutionModels.setRoofType(roofTypeStr);
         }
+
         if (wallTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log wallTypeStr hasError");
+        }else {
+            allResolutionModels.setWallType(wallTypeStr);
         }
+
         if (floorTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log floorTypeStr hasError");
+        }else {
+
         }
+
         if (windowsCaseStr.isEmpty()) {
             hasError = true;
             System.out.println("Log windowsCaseStr hasError");
+        }else {
+
         }
+
         if (doorsCaseStr.isEmpty()) {
             hasError = true;
             System.out.println("Log doorsCaseStr hasError");
+        }else {
+            allResolutionModels.setDoorsCase(doorsCaseStr);
         }
+
         if (kitchenConditionStr.isEmpty()) {
             hasError = true;
             System.out.println("Log kitchenConditionStr hasError");
+        }else {
+            allResolutionModels.setKitchenCondition(kitchenConditionStr);
         }
+
         if (bathroomConditionStr.isEmpty()) {
             hasError = true;
             System.out.println("Log bathroomConditionStr hasError");
+        }else {
+            allResolutionModels.setBathroomCondition(bathroomConditionStr);
         }
+
         if (housingConditionInGeneralStr.isEmpty()) {
             hasError = true;
             System.out.println("Log housingConditionInGeneralStr hasError");
+        }else {
+            allResolutionModels.setHousingConditionInGeneral(housingConditionInGeneralStr);
         }
+
         if (improvementNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log improvementNeedsStr hasError");
+        }else {
+            allResolutionModels.setImprovementNeeds(improvementNeedsStr);
         }
+
         if (furnitureNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log furnitureNeedsStr hasError");
+        }else {
+            allResolutionModels.setFurnitureNeeds(furnitureNeedsStr);
         }
+
         if (hardwareNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log hardwareNeedsStr hasError");
+        }else {
+            allResolutionModels.setHardwareNeeds(hardwareNeedsStr);
         }
+
         if (lightingSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log lightingSelectedStr hasError");
+        }else {
+            allResolutionModels.setLightingSelected(lightingSelectedStr);
         }
+
         if (String.valueOf(memberNumberStr).isEmpty()) {
             hasError = true;
             System.out.println("Log peopleForRoomsStr hasError");
+        }else {
+            allResolutionModels.setMemberNumber(String.valueOf(memberNumberStr));
         }
+
         if (housingLocationStr.isEmpty()) {
             hasError = true;
             System.out.println("Log houseLocationStr hasError");
+        }else {
+            allResolutionModels.setHouseLocation(housingLocationStr);
         }
+
         if (String.valueOf(roomsNumberStr).isEmpty()) {
             hasError = true;
             System.out.println("Log memberNumberStr hasError");
+        }else {
+
         }
+
         if (ventilationSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log ventilationSelectedStr hasError");
+        }else {
+            allResolutionModels.setVentilationSelected(ventilationSelectedStr);
         }
+
         if (electricitySelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log electricitySelectedStr hasError");
+        }else {
+            allResolutionModels.setElectricitySelected(electricitySelectedStr);
         }
+
         if (waterNetworkSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log waterNetworkSelectedStr hasError");
+        }else {
+            allResolutionModels.setWaterNetworkSelected(waterNetworkSelectedStr);
         }
+
         if (alternativeElectricitySelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log alternativeElectricitySelectedStr hasError");
+        }else {
+            allResolutionModels.setAlternativeElectricitySelected(alternativeElectricitySelectedStr);
         }
+
         if (sewageSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log sewageSelectedStr hasError");
+        }else {
+            allResolutionModels.setSewageSelected(sewageSelectedStr);
         }
+
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
-        }
+        }else {
 
-        allResolutionModels.setHousingTypeSpinner(housingTypeSpinnerStr);
-        allResolutionModels.setRoomsNumber(String.valueOf(roomsNumberStr));
-        allResolutionModels.setSpace(spaceStr);
-        allResolutionModels.setPropertySpinner(propertySpinnerStr);
-        allResolutionModels.setRoofType(roofTypeStr);
-        allResolutionModels.setWallType(wallTypeStr);
-        allResolutionModels.setFloorType(floorTypeStr);
-        allResolutionModels.setWindowsCase(windowsCaseStr);
-        allResolutionModels.setDoorsCase(doorsCaseStr);
-        allResolutionModels.setKitchenCondition(kitchenConditionStr);
-        allResolutionModels.setBathroomCondition(bathroomConditionStr);
-        allResolutionModels.setHousingConditionInGeneral(housingConditionInGeneralStr);
-        allResolutionModels.setImprovementNeeds(improvementNeedsStr);
-        allResolutionModels.setFurnitureNeeds(furnitureNeedsStr);
-        allResolutionModels.setHardwareNeeds(hardwareNeedsStr);
-        allResolutionModels.setLightingSelected(lightingSelectedStr);
-        allResolutionModels.setMemberNumber(String.valueOf(memberNumberStr));
+        }
         allResolutionModels.setPeopleForRooms(peopleForRoomsStr);
-        allResolutionModels.setHouseLocation(housingLocationStr);
-        allResolutionModels.setVentilationSelected(ventilationSelectedStr);
-        allResolutionModels.setElectricitySelected(electricitySelectedStr);
-        allResolutionModels.setWaterNetworkSelected(waterNetworkSelectedStr);
-        allResolutionModels.setAlternativeElectricitySelected(alternativeElectricitySelectedStr);
-        allResolutionModels.setSewageSelected(sewageSelectedStr);
+        allResolutionModels.setPeopleForRooms(peopleForRoomsStr);
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);

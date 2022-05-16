@@ -3,7 +3,7 @@
     <string name="yatim_selection_criteria">معايير اختيار الأيتام</string>
 
     <string name="head_of_the_family">بيانات رب الأسرة</string>
-    <string name="please_select_guardian_of_the_orphan">ولي أمر اليتيم</string>
+    <string name="guardian_of_the_orphan">ولي أمر اليتيم</string>
     <string name="mother">الأم</string>
     <string name="other">أخرى</string>
     <string name="refugee_status">حالة اللجوء</string>

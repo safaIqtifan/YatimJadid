@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.yatimjadid.databinding.ActivityHomeBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends BaseActivity {
 
@@ -46,6 +47,7 @@ public class HomeActivity extends BaseActivity {
 //        });
 
         binding.toolbarExitBtn.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
             startActivity(intent);
             finish();

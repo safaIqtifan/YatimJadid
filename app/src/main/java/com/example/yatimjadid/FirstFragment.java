@@ -193,78 +193,101 @@ public class FirstFragment extends Fragment {
         boolean hasError = false;
 
         if (guardianOfTheOrphanStr.equals("الأم")) {
-//            if (guardianOfTheOrphanStr.isEmpty()) {
-//                hasError = true;
-//            }
+            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
+
             if (refugeeSelectedStr.isEmpty()) {
                 hasError = true;
+            }else {
+                allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
             }
+
             if (motherNameStr.isEmpty()) {
                 hasError = true;
+            }else {
+                allResolutionModels.setMotherName(motherNameStr);
             }
+
             if (motherDateOfBirthStr.isEmpty()) {
                 hasError = true;
+            }else {
+                allResolutionModels.setMotherDateOfBirth(motherDateOfBirthStr);
             }
+
             if (maritalStatusStr.isEmpty()) {
                 hasError = true;
+            }else {
+                allResolutionModels.setMaritalStatus(maritalStatusStr);
             }
+
             if (educationalLevelStr.equals("جامعي")) {
+                allResolutionModels.setEducationalLevel(educationalLevelStr);
 
                 if (universityEducationStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    allResolutionModels.setUniversityEducation(universityEducationStr);
                 }
+
                 if (specializationStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    allResolutionModels.setSpecialization(specializationStr);
                 }
+
                 if (graduationYearStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    allResolutionModels.setGraduationYear(graduationYearStr);
                 }
+
                 if (averageStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    allResolutionModels.setAverage(averageStr);
                 }
+
             } else if (educationalLevelStr.isEmpty()) {
                 hasError = true;
             }
 
-            allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
-            allResolutionModels.setMotherName(motherNameStr);
-            allResolutionModels.setMotherDateOfBirth(motherDateOfBirthStr);
-            allResolutionModels.setEducationalLevel(educationalLevelStr);
-            allResolutionModels.setUniversityEducation(universityEducationStr);
-            allResolutionModels.setSpecialization(specializationStr);
-            allResolutionModels.setGraduationYear(graduationYearStr);
-            allResolutionModels.setAverage(averageStr);
-
         } else if (guardianOfTheOrphanStr.equals("أخرى")) {
+            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
 
             if (refugeeSelectedStr.isEmpty()) {
                 hasError = true;
-            }if (parentsNameStr.isEmpty()) {
-                hasError = true;
-            }
-            if (parentsIdStr.isEmpty()) {
-                hasError = true;
-            }
-            if (parentsDateOfBirthStr.isEmpty()) {
-                hasError = true;
-            }
-            if (relationshipWithTheOrphanStr.isEmpty()) {
-                hasError = true;
+            }else {
+                allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
             }
 
-            allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
-            allResolutionModels.setParentsName(parentsNameStr);
-            allResolutionModels.setParentsId(parentsIdStr);
-            allResolutionModels.setParentsDateOfBirth(parentsDateOfBirthStr);
-            allResolutionModels.setRelationshipWithTheOrphan(relationshipWithTheOrphanStr);
-            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
+            if (parentsNameStr.isEmpty()) {
+                hasError = true;
+            }else {
+                allResolutionModels.setParentsName(parentsNameStr);
+            }
+
+            if (parentsIdStr.isEmpty()) {
+                hasError = true;
+            }else {
+                allResolutionModels.setParentsId(parentsIdStr);
+            }
+
+            if (parentsDateOfBirthStr.isEmpty()) {
+                hasError = true;
+            }else {
+                allResolutionModels.setParentsDateOfBirth(parentsDateOfBirthStr);
+            }
+
+            if (relationshipWithTheOrphanStr.isEmpty()) {
+                hasError = true;
+            }else {
+                allResolutionModels.setRelationshipWithTheOrphan(relationshipWithTheOrphanStr);
+            }
+//            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
         }
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
         }
-
-
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);

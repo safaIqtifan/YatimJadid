@@ -75,8 +75,7 @@ public class NewYatimsFragment extends Fragment {
 
         if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
             allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
-        } else {
-            allResolutionModels = new AllResolutionModels();
+            Toast.makeText(getActivity(), "toast 1" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
         }
 
         binding.addYatimTv.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +110,7 @@ public class NewYatimsFragment extends Fragment {
 
                 completeAddCount = 0;
                 for (AddYatimModel addYatimModel : addYatimArrayList) {
+                    Toast.makeText(getActivity(), "toast 2" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
                     addYatimModel.setMainInfoModel(allResolutionModels);
                     saveDataInfoToDatabase(addYatimModel);
                 }

@@ -7,9 +7,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class RootApplication extends LocalizationApplication {
 
     private static RootApplication instance;
+    public static Realm dbRealm = null;
 
     @Override
     public void onCreate() {
@@ -17,6 +21,12 @@ public class RootApplication extends LocalizationApplication {
         instance = this;
 
         FirebaseApp.initializeApp(this);
+
+        Realm.init(this);
+
+        String realmName = "jerusalem_news";
+        RealmConfiguration config = new RealmConfiguration.Builder().name(realmName).allowWritesOnUiThread(true).build();
+        dbRealm = Realm.getInstance(config);
 
     }
 
