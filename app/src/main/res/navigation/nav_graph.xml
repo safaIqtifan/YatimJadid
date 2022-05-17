@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/AddYatimsFragment"
-        android:name="com.example.yatimjadid.NewYatimsFragment"
+        android:name="com.example.yatimjadid.addYatim.NewYatimsFragment"
         android:label="@string/add_yatims"
         tools:layout="@layout/fragment_new_yatims">
 
@@ -133,7 +133,7 @@
 
     <fragment
         android:id="@+id/AddAttachmentsFragment"
-        android:name="com.example.yatimjadid.AddAttachmentsFragment"
+        android:name="com.example.yatimjadid.addYatim.AddAttachmentsFragment"
         android:label="@string/add_attachments_fragment"
         tools:layout="@layout/fragment_add_attachments">
         <action

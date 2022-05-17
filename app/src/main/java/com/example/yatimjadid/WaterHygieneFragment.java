@@ -188,65 +188,78 @@ public class WaterHygieneFragment extends Fragment {
 
         if (domesticWaterSourceStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setDomesticWaterSource(domesticWaterSourceStr);
         }
         if (sourceOfDrinkingCookingWaterStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setSourceOfDrinkingCookingWater(sourceOfDrinkingCookingWaterStr);
         }
         if (numberOfMunicipalDaysWaterArrivedStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setNumberOfMunicipalDaysWaterArrived(numberOfMunicipalDaysWaterArrivedStr);
         }
         if (doHeNeedAnyOfTheFollowingStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setDoHeNeedAnyOfTheFollowing(doHeNeedAnyOfTheFollowingStr);
         }
         if (conditionOfCleanlinessArrangementStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setConditionOfCleanlinessArrangement(conditionOfCleanlinessArrangementStr);
         }
         if (tankCapacityStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setTankCapacity(tankCapacityStr);
         }
         if (tankCapacityNumberStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setTankCapacityNumber(tankCapacityNumberStr);
         }
         if (drinkingWaterCapacityStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setDrinkingWaterCapacity(drinkingWaterCapacityStr);
         }
         if (drinkingWaterCapacityNumStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setDrinkingWaterCapacityNum(drinkingWaterCapacityNumStr);
         }
         if (guardianOfTheOrphanSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanSelectedStr);
         }
         if (familyDebtsSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setFamilyDebtsSelected(familyDebtsSelectedStr);
         }
         if (accumulatedCollegeSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setAccumulatedCollegeSelected(accumulatedCollegeSelectedStr);
         }
         if (workNatureStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setWorkNature(workNatureStr);
         }
         if (averageIncomeStr.isEmpty()) {
             hasError = true;
+        }else {
+            allResolutionModels.setAverageIncome(averageIncomeStr);
         }
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
         }
-
-        allResolutionModels.setDomesticWaterSource(domesticWaterSourceStr);
-        allResolutionModels.setSourceOfDrinkingCookingWater(sourceOfDrinkingCookingWaterStr);
-        allResolutionModels.setNumberOfMunicipalDaysWaterArrived(numberOfMunicipalDaysWaterArrivedStr);
-        allResolutionModels.setDoHeNeedAnyOfTheFollowing(doHeNeedAnyOfTheFollowingStr);
-        allResolutionModels.setConditionOfCleanlinessArrangement(conditionOfCleanlinessArrangementStr);
-        allResolutionModels.setTankCapacity(tankCapacityStr);
-        allResolutionModels.setTankCapacityNumber(tankCapacityNumberStr);
-        allResolutionModels.setDrinkingWaterCapacity(drinkingWaterCapacityStr);
-        allResolutionModels.setDrinkingWaterCapacityNum(drinkingWaterCapacityNumStr);
-        allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanSelectedStr);
-        allResolutionModels.setFamilyDebtsSelected(familyDebtsSelectedStr);
-        allResolutionModels.setAccumulatedCollegeSelected(accumulatedCollegeSelectedStr);
-        allResolutionModels.setWorkNature(workNatureStr);
-        allResolutionModels.setAverageIncome(averageIncomeStr);
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);

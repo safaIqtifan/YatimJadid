@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="16dp"
-    tools:context=".NewYatimsFragment">
+    tools:context=".addYatim.NewYatimsFragment">
 
         <TextView
             android:id="@+id/add_yatim_tv"

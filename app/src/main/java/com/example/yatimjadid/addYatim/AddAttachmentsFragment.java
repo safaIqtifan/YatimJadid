@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.addYatim;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
+import com.example.yatimjadid.R;
 import com.example.yatimjadid.databinding.FragmentAddAttachmentsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -129,7 +131,8 @@ public class AddAttachmentsFragment extends Fragment {
                     return;
                 }
                 for (String photoType : photosUriMap.keySet()) {
-                    uploadPhoto(photoType, photosUriMap.get(photoType));
+
+//                    uploadPhoto(photoType, photosUriMap.get(photoType));
                 }
             }
         });
@@ -171,34 +174,42 @@ public class AddAttachmentsFragment extends Fragment {
             switch (photoType) {
                 case PHOTO_ID:
                     selectedImageView = binding.photoID;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_DECEASED_CERTIFICATE:
                     selectedImageView = binding.certificateOfDeceased;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_BIRTH_CERTIFICATE:
                     selectedImageView = binding.birthCertificate;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_PERSONAL_PICTURE:
                     selectedImageView = binding.personalPicture;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_CUSTODY_DECLARATION:
                     selectedImageView = binding.custodyDeclaration;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_GUARDIANSHIP:
                     selectedImageView = binding.guardianshipImage;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_SCHOOL_CERTIFICATE:
                     selectedImageView = binding.schoolCertificateImage;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
                 case PHOTO_SALARY_SLIP_IF_ANY:
                     selectedImageView = binding.salarySlipIfAny;
+                    addYatimModel.setPhotoId(photoUri.toString());
                     break;
             }
             if (selectedImageView != null)
                 selectedImageView.setImageURI(photoUri);
             selectedImageView.setVisibility(View.VISIBLE);
 
-            photosUriMap.put(photoType, photoUri);
+//            photosUriMap.put(photoType, photoUri);
 
         }
     }
@@ -220,10 +231,10 @@ public class AddAttachmentsFragment extends Fragment {
 
     private void uploadPhoto(String photoType, Uri photoUri) {
 
-        lodingBar.setTitle("جاري حفظ البيانات");
-        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
-        lodingBar.setCanceledOnTouchOutside(false);
-        lodingBar.show();
+//        lodingBar.setTitle("جاري حفظ البيانات");
+//        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+//        lodingBar.setCanceledOnTouchOutside(false);
+//        lodingBar.show();
 
         StorageReference imgRef = storageRef.child(Constants.ATTACHMENTS_IMAGES + "/"
                 + UUID.randomUUID().toString());

@@ -3,7 +3,9 @@ package com.example.yatimjadid.Models;
 import java.io.Serializable;
 import java.util.List;
 
-public class AllResolutionModels implements Serializable {
+import io.realm.RealmObject;
+
+public class AllResolutionModels extends RealmObject implements Serializable  {
 
     String id = "";
     String yatimParentsSelected = "";

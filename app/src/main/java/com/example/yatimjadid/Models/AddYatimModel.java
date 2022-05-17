@@ -2,7 +2,10 @@ package com.example.yatimjadid.Models;
 
 import java.io.Serializable;
 
-public class AddYatimModel extends AllResolutionModels implements Serializable {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+public class AddYatimModel extends RealmObject implements Serializable {
 
     AllResolutionModels mainInfoModel = null;
 
@@ -14,6 +17,9 @@ public class AddYatimModel extends AllResolutionModels implements Serializable {
         this.mainInfoModel = mainInfoModel;
     }
 
+    RealmList<AllResolutionModels> allResolutionModelsRealmList;
+    RealmList<FamilyMembersModel> familyMembersModelRealmList;
+
     String YatimPhotoUri = "";
     String yatimName = "";
     String yatimDateOfBirth = "";
@@ -24,10 +30,9 @@ public class AddYatimModel extends AllResolutionModels implements Serializable {
     String fatherJob = "";
     String previousIncome = "";
     String inheritanceOrPension = "";
-    String conservation = "";
-    String addressDetails = "";
+    String city = "";
+    String area = "";
     String mobileNumber = "";
-
     String yatimeAge = "";
 
     String height = "";
@@ -83,6 +88,23 @@ public class AddYatimModel extends AllResolutionModels implements Serializable {
     String guardianshipImage = "";
     String schoolCertificateImage = "";
     String salarySlipIfAny = "";
+
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
 
     public String getDisabilityType() {
         return disabilityType;
@@ -179,23 +201,6 @@ public class AddYatimModel extends AllResolutionModels implements Serializable {
     public void setInheritanceOrPension(String inheritanceOrPension) {
         this.inheritanceOrPension = inheritanceOrPension;
     }
-
-    public String getConservation() {
-        return conservation;
-    }
-
-    public void setConservation(String conservation) {
-        this.conservation = conservation;
-    }
-
-    public String getAddressDetails() {
-        return addressDetails;
-    }
-
-    public void setAddressDetails(String addressDetails) {
-        this.addressDetails = addressDetails;
-    }
-
     public String getMobileNumber() {
         return mobileNumber;
     }

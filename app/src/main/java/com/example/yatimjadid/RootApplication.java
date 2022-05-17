@@ -24,7 +24,7 @@ public class RootApplication extends LocalizationApplication {
 
         Realm.init(this);
 
-        String realmName = "jerusalem_news";
+        String realmName = "yatim_jadid";
         RealmConfiguration config = new RealmConfiguration.Builder().name(realmName).allowWritesOnUiThread(true).build();
         dbRealm = Realm.getInstance(config);
 

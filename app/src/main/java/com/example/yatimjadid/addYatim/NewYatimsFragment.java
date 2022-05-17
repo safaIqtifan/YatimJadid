@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.addYatim;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,8 +13,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yatimjadid.Adapter.YatimDataAdapter;
+import com.example.yatimjadid.Constants;
+import com.example.yatimjadid.DataCallBack;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.Models.AllResolutionModels;
+import com.example.yatimjadid.R;
+import com.example.yatimjadid.RootApplication;
+import com.example.yatimjadid.UtiltApp;
 import com.example.yatimjadid.databinding.FragmentNewYatimsBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -103,16 +108,20 @@ public class NewYatimsFragment extends Fragment {
                     return;
                 }
 
-                lodingBar.setTitle("حفظ البيانات");
-                lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
-                lodingBar.setCanceledOnTouchOutside(false);
-                lodingBar.show();
+//                lodingBar.setTitle("حفظ البيانات");
+//                lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+//                lodingBar.setCanceledOnTouchOutside(false);
+//                lodingBar.show();
 
                 completeAddCount = 0;
                 for (AddYatimModel addYatimModel : addYatimArrayList) {
                     Toast.makeText(getActivity(), "toast 2" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
                     addYatimModel.setMainInfoModel(allResolutionModels);
-                    saveDataInfoToDatabase(addYatimModel);
+//                    saveDataInfoToDatabase(addYatimModel);
+                    RootApplication.dbRealm.beginTransaction();
+//                    AddYatimModel addedModel =
+                            RootApplication.dbRealm.copyToRealm(addYatimModel);
+                    RootApplication.dbRealm.commitTransaction();
                 }
             }
         });

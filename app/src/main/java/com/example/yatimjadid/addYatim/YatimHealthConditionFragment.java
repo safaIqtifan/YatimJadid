@@ -250,55 +250,86 @@ public class YatimHealthConditionFragment extends Fragment {
 
         if (heightStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setHeight(heightStr);
         }
         if (weightStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setWeight(weightStr);
         }
         if (bodyHealthSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setNeedAnyOfTheFollowing(bodyHealthSelectedStr);
         }
         if (hasALockSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setHasALockSelected(hasALockSelectedStr);
+        }
+        if (healthConditionSelectedStr.isEmpty()){
+            hasError = true;
+        }else {
+            addYatimModel.setHealthConditionSelected(healthConditionSelectedStr);
         }
         if (healthConditionSelectedStr.equals("غير معافي")) {
+            addYatimModel.setHealthConditionSelected(healthConditionSelectedStr);
             if (natureOfCaseStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setNatureOfCase(natureOfCaseStr);
             }
             if (natureOfCaseStr.equals("إعاقة")) {
+                addYatimModel.setNatureOfCase(natureOfCaseStr);
                 if (disabilityTypeStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    addYatimModel.setDisabilityType(disabilityTypeStr);
                 }
-                addYatimModel.setDisabilityType(disabilityTypeStr);
             }
             if (statusSinceSelectedStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setStatusSinceSelected(statusSinceSelectedStr);
             }
             if (diseaseNameStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setDiseaseName(diseaseNameStr);
             }
             if (yatimSpecialNeedsStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setYatimSpecialNeeds(yatimSpecialNeedsStr);
             }
             if (handicappedNeedsStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setHandicappedNeeds(handicappedNeedsStr);
+            }
+            if (psychologicalStateStr.isEmpty()){
+                hasError = true;
+            }else {
+                addYatimModel.setPsychologicalState(psychologicalStateStr);
             }
             if (psychologicalStateStr.equals("يعاني من اضرابات نفسية")) {
                 if (mentalDisorderTypeStr.isEmpty()) {
                     hasError = true;
+                }else {
+                    addYatimModel.setMentalDisorderType(mentalDisorderTypeStr);
                 }
             }
             if (teethHealthStr.isEmpty()) {
                 hasError = true;
-            }
-            if (psychologicalStateStr.isEmpty()) {
-                hasError = true;
+            }else {
+                addYatimModel.setTeethHealth(teethHealthStr);
             }
             if (yatimNeedsStr.isEmpty()) {
                 hasError = true;
+            }else {
+                addYatimModel.setYatimNeeds(yatimNeedsStr);
             }
-        }
-        if (healthConditionSelectedStr.isEmpty()) {
-            hasError = true;
         }
 
         if (hasError) {
@@ -306,30 +337,12 @@ public class YatimHealthConditionFragment extends Fragment {
             return;
         }
 
-        addYatimModel.setHeight(heightStr);
-        addYatimModel.setWeight(weightStr);
-        addYatimModel.setNeedAnyOfTheFollowing(bodyHealthSelectedStr);
-        addYatimModel.setHealthConditionSelected(healthConditionSelectedStr);
-        addYatimModel.setHasALockSelected(hasALockSelectedStr);
-        addYatimModel.setNatureOfCase(natureOfCaseStr);
-
-        addYatimModel.setStatusSinceSelected(statusSinceSelectedStr);
-        addYatimModel.setDiseaseName(diseaseNameStr);
-        addYatimModel.setYatimSpecialNeeds(yatimSpecialNeedsStr);
-        addYatimModel.setHandicappedNeeds(handicappedNeedsStr);
-        addYatimModel.setMentalDisorderType(mentalDisorderTypeStr);
-        addYatimModel.setTeethHealth(teethHealthStr);
-        addYatimModel.setPsychologicalState(psychologicalStateStr);
-        addYatimModel.setYatimNeeds(yatimNeedsStr);
-
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-//        Toast.makeText(getActivity(), "" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(YatimHealthConditionFragment.this)
                 .navigate(R.id.action_YatimHealthConditionFragment_to_YatimEducationalStatusFragment, bundle);
 
     }
-
 
     @Override
     public void onDestroyView() {

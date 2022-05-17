@@ -46,10 +46,12 @@ public class BasicInformationFragment extends Fragment {
 
     Uri yatimPhotoUri;
     String yatimGenderSelectedStr = "";
-    String governorateStr = "";
+//    String governorateStr = "";
     AddYatimModel addYatimModel;
     String age;
-    String ageAtDeath;
+    String cityStr;
+    String areaStr;
+//    String ageAtDeath;
     //    ArrayAdapter<String> ArrayAdapter;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     StorageReference storageRef;
@@ -209,6 +211,12 @@ public class BasicInformationFragment extends Fragment {
                             areaListId = R.array.rafah_list;
                             break;
                     }
+
+                    if (i > 0)
+                        cityStr = binding.citySpinner.getSelectedItem().toString();
+                    else
+                        cityStr = "";
+
                     String[] areaList = requireActivity().getResources().getStringArray(areaListId);
                     if (areaList.length > 0) {
                         getArea(areaList);
@@ -220,7 +228,19 @@ public class BasicInformationFragment extends Fragment {
                     binding.areaSpinnerLY.setVisibility(View.GONE);
                 }
             }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
+        binding.areaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i > 0)
+                    areaStr = binding.areaSpinner.getSelectedItem().toString();
+                else
+                    areaStr = "";
+            }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -239,50 +259,74 @@ public class BasicInformationFragment extends Fragment {
         String fatherJobStr = binding.fatherJob.getText().toString();
         String previousIncomeStr = binding.previousIncome.getText().toString();
         String inheritanceOrPensionStr = binding.inheritanceOrPension.getText().toString();
-//        String conservationStr = binding.conservation.getText().toString();
-//        String addressDetailsStr = binding.addressDetails.getText().toString();
         String mobileNumberStr = binding.mobileNumber1.getText().toString();
 
         boolean hasError = false;
 
         if (yatimPhotoUri == null) {
             hasError = true;
+        }else {
+            addYatimModel.setYatimPhotoUri(String.valueOf(yatimPhotoUri));
         }
         if (yatimNameStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setYatimName(yatimNameStr);
         }
         if (yatimDateOfBirthStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setYatimDateOfBirth(yatimDateOfBirthStr);
         }
         if (yatimGenderSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setYatimGenderSelected(yatimGenderSelectedStr);
         }
         if (fatherDeathDateStr.isEmpty() && fatherBirthDateStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setFatherDeathDate(fatherDeathDateStr);
         }
         if (causeOfDeathStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setCauseOfDeath(causeOfDeathStr);
         }
         if (ageAtDeathStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setAgeAtDeath(ageAtDeathStr);
         }
         if (fatherJobStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setFatherJob(fatherJobStr);
         }
         if (previousIncomeStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setPreviousIncome(previousIncomeStr);
         }
         if (inheritanceOrPensionStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setInheritanceOrPension(inheritanceOrPensionStr);
         }
-//        if (conservationStr.isEmpty()) {
-//            hasError = true;
-//        }
-//        if (addressDetailsStr.isEmpty()) {
-//            hasError = true;
-//        }
+        if (cityStr.isEmpty()) {
+            hasError = true;
+        }else {
+           addYatimModel.setCity(cityStr);
+        }
+        if (areaStr.isEmpty()) {
+            hasError = true;
+        }else {
+            addYatimModel.setArea(areaStr);
+        }
         if (mobileNumberStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMobileNumber(mobileNumberStr);
         }
 
         if (hasError) {
@@ -295,28 +339,12 @@ public class BasicInformationFragment extends Fragment {
         int month = Integer.parseInt(dateArr[1]);
         int day = Integer.parseInt(dateArr[2]);
         age = setAge(year, month, day);
-
-        addYatimModel.setYatimPhotoUri(String.valueOf(yatimPhotoUri));
-        addYatimModel.setYatimName(yatimNameStr);
-        addYatimModel.setYatimDateOfBirth(yatimDateOfBirthStr);
-        addYatimModel.setYatimGenderSelected(yatimGenderSelectedStr);
-        addYatimModel.setFatherDeathDate(fatherDeathDateStr);
-        addYatimModel.setCauseOfDeath(causeOfDeathStr);
-        addYatimModel.setAgeAtDeath(ageAtDeathStr);
-        addYatimModel.setFatherJob(fatherJobStr);
-        addYatimModel.setPreviousIncome(previousIncomeStr);
-        addYatimModel.setInheritanceOrPension(inheritanceOrPensionStr);
-//        addYatimModel.setConservation(conservationStr);
-//        addYatimModel.setAddressDetails(addressDetailsStr);
-        addYatimModel.setMobileNumber(mobileNumberStr);
-        addYatimModel.setYatimeAge(age);
-
         uploadPhoto(yatimPhotoUri);
+
+        addYatimModel.setYatimeAge(age);
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-//        Toast.makeText(getActivity(), "igh" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
-//        System.out.println("Log BasicInformation getYatimName " + addYatimModel.getYatimName());
         NavHostFragment.findNavController(BasicInformationFragment.this)
                 .navigate(R.id.action_BasicInformationFragment_to_YatimHealthConditionFragment, bundle);
     }

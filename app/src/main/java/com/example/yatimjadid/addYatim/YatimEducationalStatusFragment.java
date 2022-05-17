@@ -383,100 +383,117 @@ public class YatimEducationalStatusFragment extends Fragment {
         if (readWriteSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log readWriteSelectedStr hasError");
+        }else {
+            addYatimModel.setReadWriteSelected(readWriteSelectedStr);
         }
         if (educationalStatusSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log educationalStatusSelectedStr hasError");
+        }else {
+            addYatimModel.setEducationalStatusSelected(educationalStatusSelectedStr);
         }
         if (educationalStatusSelectedStr.equals("غير ملتحق")) {
             if (reasonForNotJoiningStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log reasonForNotJoiningStr hasError");
+            }else {
+                addYatimModel.setReasonForNotJoining(reasonForNotJoiningStr);
             }
         } else if (educationalStatusSelectedStr.equals("ملتحق")) {
             if (stageStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log stageStr hasError");
+            }else {
+                addYatimModel.setStage(stageStr);
             }
             if (stageStr.equals("روضة") || stageStr.equals("مدرسة")){
                 if (periodSelectedStr.isEmpty()) {
                     hasError = true;
                     System.out.println("Log periodSelectedStr hasError");
+                }else {
+                    addYatimModel.setPeriodSelected(periodSelectedStr);
                 }
             }
             if (schoolTypeStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log schoolTypeStr hasError");
+            }else {
+                addYatimModel.setSchoolType(schoolTypeStr);
             }
             if (schoolUniversityNameStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log schoolUniversityNameStr hasError");
+            }else {
+                addYatimModel.setSchoolUniversityName(schoolUniversityNameStr);
             }
             if (educationAddressStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log educationAddressStr hasError");
+            }else {
+                addYatimModel.setEducationAddress(educationAddressStr);
             }
             if (gradeLevelStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log gradeLevelStr hasError");
+            }else {
+                addYatimModel.setGradeLevel(gradeLevelStr);
             }
             if (specialistStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log specialistStr hasError");
+            }else {
+                addYatimModel.setSpecialist(specialistStr);
             }
             if (educationalAvargeStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log educationalAvargeStr hasError");
+            }else {
+                addYatimModel.setEducationalAvarge(educationalAvargeStr);
             }
             if (ConsistentSelectedStr.equals("لا")) {
                 if (nonComplianceStr.isEmpty()) {
                     hasError = true;
                     System.out.println("Log ConsistentSelectedStr hasError");
+                }else {
+                    addYatimModel.setNonCompliance(nonComplianceStr);
                 }
-                addYatimModel.setPeriodSelected(periodSelectedStr);
             }
             if (ConsistentSelectedStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log ConsistentSelectedStr hasError");
+            }else {
+                addYatimModel.setConsistentSelected(ConsistentSelectedStr);
             }
             if (reachSchoolStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log reachSchoolStr hasError");
+            }else {
+                addYatimModel.setReachSchool(reachSchoolStr);
             }
             if (levelOfAcademicAchievementStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log levelOfAcademicAchievementStr hasError");
+            }else {
+
             }
             if (educationalSpecialNeedsStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log educationalSpecialNeedsStr hasError");
+            }else {
+                addYatimModel.setEducationalSpecialNeeds(educationalSpecialNeedsStr);
             }
             if (materialsNeedStrengtheningStr.isEmpty()) {
                 hasError = true;
                 System.out.println("Log materialsNeedStrengtheningStr hasError");
+            }else {
+
             }
         }
+
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
         }
-
-        addYatimModel.setEducationalStatusSelected(educationalStatusSelectedStr);
-        addYatimModel.setReasonForNotJoining(reasonForNotJoiningStr);
-        addYatimModel.setStage(stageStr);
-        addYatimModel.setSchoolType(schoolTypeStr);
-        addYatimModel.setSchoolUniversityName(schoolUniversityNameStr);
-        addYatimModel.setEducationAddress(educationAddressStr);
-        addYatimModel.setGradeLevel(gradeLevelStr);
-        addYatimModel.setSpecialist(specialistStr);
-        addYatimModel.setEducationalAvarge(educationalAvargeStr);
-        addYatimModel.setConsistentSelected(ConsistentSelectedStr);
-        addYatimModel.setNonCompliance(nonComplianceStr);
-        addYatimModel.setReachSchool(reachSchoolStr);
-        addYatimModel.setReadWriteSelected(readWriteSelectedStr);
-        addYatimModel.setLevelOfAcademicAchievement(levelOfAcademicAchievementStr);
-        addYatimModel.setEducationalSpecialNeeds(educationalSpecialNeedsStr);
-        addYatimModel.setMaterialsNeedStrengthening(materialsNeedStrengtheningStr);
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);

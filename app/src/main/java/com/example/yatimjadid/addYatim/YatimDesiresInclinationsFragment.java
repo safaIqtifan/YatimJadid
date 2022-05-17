@@ -143,30 +143,48 @@ public class YatimDesiresInclinationsFragment extends Fragment {
 
         if (talentSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setTalentSelected(talentSelectedStr);
         }
         if (interestsSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(interestsSelectedStr);
         }
         if (skillsSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(skillsSelectedStr);
         }
         if (wishSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(wishSelectedStr);
         }
         if (responsibilitiesSelectedStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(responsibilitiesSelectedStr);
         }
         if (favoriteFoodStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(favoriteFoodStr);
         }
         if (futureWishStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(futureWishStr);
         }
         if (petStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(petStr);
         }
         if (immediateNeedsStr.isEmpty()) {
             hasError = true;
+        }else {
+            addYatimModel.setMaterialsNeedStrengthening(immediateNeedsStr);
         }
 
         if (hasError) {
@@ -174,23 +192,11 @@ public class YatimDesiresInclinationsFragment extends Fragment {
             return;
         }
 
-        addYatimModel.setTalentSelected(talentSelectedStr);
-//        addYatimModel.setMaterialsNeedStrengthening(interestsSelectedStr);
-//        addYatimModel.setMaterialsNeedStrengthening(skillsSelectedStr);
-//        addYatimModel.setMaterialsNeedStrengthening(wishSelectedStr);
-//        addYatimModel.setMaterialsNeedStrengthening(responsibilitiesSelectedStr);
-//        addYatimModel.setMaterialsNeedStrengthening(favoriteFoodStr);
-//        addYatimModel.setMaterialsNeedStrengthening(futureWishStr);
-//        addYatimModel.setMaterialsNeedStrengthening(petStr);
-//        addYatimModel.setMaterialsNeedStrengthening(immediateNeedsStr);
-
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-//        Toast.makeText(getActivity(), "" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(YatimDesiresInclinationsFragment.this)
                 .navigate(R.id.action_YatimDesiresInclinationsFragment_to_AddAttachmentsFragment, bundle);
     }
-
 
     @Override
     public void onDestroyView() {
