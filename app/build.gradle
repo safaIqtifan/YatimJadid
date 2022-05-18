@@ -57,6 +57,7 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.akexorcist:localization:1.2.6'
+    implementation 'com.duolingo.open:rtl-viewpager:2.0.0'
 
     implementation 'org.apache.poi:poi:3.17'
 

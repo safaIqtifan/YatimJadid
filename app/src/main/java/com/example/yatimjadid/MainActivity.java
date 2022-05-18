@@ -3,30 +3,27 @@ package com.example.yatimjadid;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.yatimjadid.databinding.ActivityHomeBinding;
+import com.example.yatimjadid.databinding.ActivityMainBinding;
+import com.example.yatimjadid.fragments.YatimSelectionCriteriaFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeActivity2 extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityHomeBinding binding;
+    private ActivityMainBinding binding;
+
+//    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.mainToolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 //        binding.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -47,12 +44,10 @@ public class HomeActivity2 extends BaseActivity {
             finish();
         });
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.fragmentContainer, new YatimSelectionCriteriaFragment()).commitAllowingStateLoss();
+
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 }

@@ -1,30 +1,38 @@
-package com.example.yatimjadid.addYatim;
+package com.example.yatimjadid.fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yatimjadid.Adapter.YatimDataAdapter;
+import com.example.yatimjadid.AddYatimActivity;
 import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.DataCallBack;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.Models.AllResolutionModels;
 import com.example.yatimjadid.R;
 import com.example.yatimjadid.RootApplication;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.UtiltApp;
 import com.example.yatimjadid.databinding.FragmentNewYatimsBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
+import kotlin.jvm.functions.Function0;
 
 public class NewYatimsFragment extends Fragment {
 
@@ -37,6 +45,10 @@ public class NewYatimsFragment extends Fragment {
     private ProgressDialog lodingBar;
     private DatabaseReference yatimRef;
     int completeAddCount = 0;
+
+    StartYatimCriteriaActivity ownerActivity;
+
+    ActivityResultLauncher<Intent> addYatimLaunch = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +71,7 @@ public class NewYatimsFragment extends Fragment {
             public void Result(Object obj, String type, Object otherData) {
                 if (type.equals("delete")) {
                     showHideToolbarAddButton();
+                    UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
 //                    Toast.makeText(getActivity(), addYatimModel.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -66,36 +79,59 @@ public class NewYatimsFragment extends Fragment {
 
         binding.rvYatim.setAdapter(adapter);
 
-        Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
-            AddYatimModel yatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
-            addYatimArrayList.add(yatimModel);
-            adapter.notifyDataSetChanged();
-            showHideToolbarAddButton();
+        addYatimLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK) {
 
-            Toast.makeText(getActivity(), yatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
-            bundle.clear();
-            UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
-        }
+                if (result.getData() == null)
+                    return;
 
-        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
-            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
-            Toast.makeText(getActivity(), "toast 1" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
-        }
+                AddYatimModel yatimModel = (AddYatimModel) result.getData().getSerializableExtra(Constants.KEY_NEW_YATIM_DATA_MODEL);
+                addYatimArrayList.add(yatimModel);
+                adapter.notifyDataSetChanged();
+                showHideToolbarAddButton();
+
+                Toast.makeText(getActivity(), yatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
+                UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
+            }
+        });
+
+//        Bundle bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
+//            AddYatimModel yatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
+//            addYatimArrayList.add(yatimModel);
+//            adapter.notifyDataSetChanged();
+//            showHideToolbarAddButton();
+//
+//            Toast.makeText(getActivity(), yatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
+//            bundle.clear();
+//            UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
+//        }
+
+        ownerActivity = (StartYatimCriteriaActivity) requireActivity();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+
+
+//        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
+//            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
+//            Toast.makeText(getActivity(), "toast 1" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
+//        }
 
         binding.addYatimTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(NewYatimsFragment.this)
-                        .navigate(R.id.action_AddYatimsFragment_to_BasicInformationFragment);
+//                NavHostFragment.findNavController(NewYatimsFragment.this)
+//                        .navigate(R.id.action_AddYatimsFragment_to_BasicInformationFragment);
+
+                openAddYatimActivity();
             }
         });
 
         binding.nextBasicInfoFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(NewYatimsFragment.this)
-                        .navigate(R.id.action_AddYatimsFragment_to_BasicInformationFragment);
+//                NavHostFragment.findNavController(NewYatimsFragment.this)
+//                        .navigate(R.id.action_AddYatimsFragment_to_BasicInformationFragment);
+                openAddYatimActivity();
             }
         });
 
@@ -108,20 +144,21 @@ public class NewYatimsFragment extends Fragment {
                     return;
                 }
 
-//                lodingBar.setTitle("حفظ البيانات");
-//                lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
-//                lodingBar.setCanceledOnTouchOutside(false);
-//                lodingBar.show();
+                lodingBar.setTitle("حفظ البيانات");
+                lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+                lodingBar.setCanceledOnTouchOutside(false);
+                lodingBar.show();
 
                 completeAddCount = 0;
                 for (AddYatimModel addYatimModel : addYatimArrayList) {
-                    Toast.makeText(getActivity(), "toast 2" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "toast 2" + allResolutionModels.getParentsName(), Toast.LENGTH_SHORT).show();
                     addYatimModel.setMainInfoModel(allResolutionModels);
-//                    saveDataInfoToDatabase(addYatimModel);
-                    RootApplication.dbRealm.beginTransaction();
+                    addYatimModel.setFamilyMembersList(UtiltApp.getFamilyMembers(requireActivity()));
+                    saveDataInfoToDatabase(addYatimModel);
+//                    RootApplication.dbRealm.beginTransaction();
 //                    AddYatimModel addedModel =
-                            RootApplication.dbRealm.copyToRealm(addYatimModel);
-                    RootApplication.dbRealm.commitTransaction();
+//                    RootApplication.dbRealm.copyToRealm(addYatimModel);
+//                    RootApplication.dbRealm.commitTransaction();
                 }
             }
         });
@@ -129,9 +166,20 @@ public class NewYatimsFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-//        UtiltApp.setYatimData(requireActivity(), addYatimArrayList);
+    public void onResume() {
+        super.onResume();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.allResolutionModels = allResolutionModels;
+    }
+
+    private void openAddYatimActivity() {
+        Intent intent = new Intent(requireActivity(), AddYatimActivity.class);
+        addYatimLaunch.launch(intent);
     }
 
     public void showHideToolbarAddButton() {
@@ -156,11 +204,15 @@ public class NewYatimsFragment extends Fragment {
 //                            startActivity(i);
 //                            finish();
                 completeAddCount++;
-                if (completeAddCount == addYatimArrayList.size()) {
+                if (completeAddCount >= addYatimArrayList.size()) {
                     lodingBar.dismiss();
                     Toast.makeText(getActivity(), "added Successfully", Toast.LENGTH_SHORT).show();
-                    NavHostFragment.findNavController(NewYatimsFragment.this)
-                            .navigate(R.id.action_AddYatimsFragment_to_yatimSelectionCriteriaFragment);
+//                    NavHostFragment.findNavController(NewYatimsFragment.this)
+//                            .navigate(R.id.action_AddYatimsFragment_to_yatimSelectionCriteriaFragment);
+
+                    requireActivity().setResult(Activity.RESULT_OK);
+                    requireActivity().finish();
+
                 }
 
             } else {

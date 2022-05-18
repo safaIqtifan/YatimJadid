@@ -64,9 +64,7 @@ public class AllResolutionModels extends RealmObject implements Serializable  {
     String workNature = "";
     String averageIncome = "";
 
-    List<FamilyMembersModel> familyMembersList = null;
-
-
+//    List<FamilyMembersModel> familyMembersList = null;
 
 
 //    String memberName;

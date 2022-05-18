@@ -29,7 +29,7 @@ public class SigninActivity extends BaseActivity {
     EditText mEmail, mPassword;
     Button mLoginBtn;
     TextView mCreateBtn, forgotTextLink;
-//    ProgressBar progressBar;
+    //    ProgressBar progressBar;
     private ProgressDialog lodingBar;
 
     FirebaseAuth fAuth;
@@ -105,16 +105,16 @@ public class SigninActivity extends BaseActivity {
 
     }
 
-    public void ValidData(){
+    public void ValidData() {
 
         String emailStr = mEmail.getText().toString();
         String passwordStr = mPassword.getText().toString();
 
-        if (emailStr.isEmpty()){
+        if (emailStr.isEmpty()) {
             mEmail.setError("Email is Missing");
             return;
         }
-        if (passwordStr.isEmpty()){
+        if (passwordStr.isEmpty()) {
             mPassword.setError("Password is Missing");
             return;
         }
@@ -126,7 +126,7 @@ public class SigninActivity extends BaseActivity {
         LoginAth(emailStr, passwordStr);
     }
 
-    public void LoginAth(String email, String password){
+    public void LoginAth(String email, String password) {
 
         fAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -135,7 +135,7 @@ public class SigninActivity extends BaseActivity {
                         if (task.isSuccessful()) {
 
                             lodingBar.dismiss();
-                            startActivity(new Intent(SigninActivity.this, HomeActivity.class)
+                            startActivity(new Intent(SigninActivity.this, MainActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                             finish();
 
@@ -148,13 +148,13 @@ public class SigninActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
-            finish();
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+//            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+//            finish();
+//        }
+//    }
 }

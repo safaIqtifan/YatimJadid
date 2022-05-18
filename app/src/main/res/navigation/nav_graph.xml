@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/yatimSelectionCriteriaFragment"
-        android:name="com.example.yatimjadid.YatimSelectionCriteriaFragment"
+        android:name="com.example.yatimjadid.fragments.YatimSelectionCriteriaFragment"
         android:label="@string/yatim_selection_criteria"
         tools:layout="@layout/fragment_yatim_selection_criteria">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.yatimjadid.FirstFragment"
+        android:name="com.example.yatimjadid.fragments.FirstFragment"
         android:label="@string/head_of_the_family"
         tools:layout="@layout/fragment_first">
 
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.yatimjadid.SecondFragment"
+        android:name="com.example.yatimjadid.fragments.SecondFragment"
         android:label="@string/housing_condition"
         tools:layout="@layout/fragment_second">
 
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/WaterHygieneFragment"
-        android:name="com.example.yatimjadid.WaterHygieneFragment"
+        android:name="com.example.yatimjadid.fragments.WaterHygieneFragment"
         android:label="@string/water_hygiene_hygienicPractices"
         tools:layout="@layout/fragment_water_hygiene">
 
@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/AddYatimsFragment"
-        android:name="com.example.yatimjadid.addYatim.NewYatimsFragment"
+        android:name="com.example.yatimjadid.fragments.NewYatimsFragment"
         android:label="@string/add_yatims"
         tools:layout="@layout/fragment_new_yatims">
 
@@ -108,7 +108,7 @@
 
     <fragment
         android:id="@+id/FamilyMembersFragment"
-        android:name="com.example.yatimjadid.FamilyMembersFragment"
+        android:name="com.example.yatimjadid.fragments.FamilyMembersFragment"
         android:label="@string/family_members"
         tools:layout="@layout/fragment_family_members">
 

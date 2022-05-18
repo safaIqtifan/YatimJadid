@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.fragments;
 
 import android.os.Bundle;
 
@@ -13,7 +13,11 @@ import android.widget.AdapterView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.yatimjadid.Constants;
+import com.example.yatimjadid.MainActivity;
 import com.example.yatimjadid.Models.AllResolutionModels;
+import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentWaterHygieneBinding;
 
 public class WaterHygieneFragment extends Fragment {
@@ -31,6 +35,8 @@ public class WaterHygieneFragment extends Fragment {
 
     AllResolutionModels allResolutionModels;
 
+    StartYatimCriteriaActivity ownerActivity;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -45,11 +51,15 @@ public class WaterHygieneFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL))
-            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
-        else
-            allResolutionModels = new AllResolutionModels();
+        ownerActivity = (StartYatimCriteriaActivity) requireActivity();
+
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+
+//        Bundle bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL))
+//            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
+//        else
+//            allResolutionModels = new AllResolutionModels();
 
         binding.domesticWaterSource.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -165,14 +175,33 @@ public class WaterHygieneFragment extends Fragment {
             }
         });
 
+        binding.backFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((StartYatimCriteriaActivity) requireActivity()).prevFragment();
+                ownerActivity.prevFragment();
+            }
+        });
 
-        binding.nextWaterFragment.setOnClickListener(new View.OnClickListener() {
+        binding.nextSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkYatimWaterHygiene();
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.allResolutionModels = allResolutionModels;
     }
 
     public void checkYatimWaterHygiene() {
@@ -264,9 +293,12 @@ public class WaterHygieneFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);
 
-        NavHostFragment.findNavController(WaterHygieneFragment.this)
-                .navigate(R.id.action_WaterHygieneFragment_to_FamilyMembersFragment, bundle);
+//        NavHostFragment.findNavController(WaterHygieneFragment.this)
+//                .navigate(R.id.action_WaterHygieneFragment_to_FamilyMembersFragment, bundle);
 
+//        ((StartYatimCriteriaActivity) requireActivity()).nextFragment();
+
+        ownerActivity.nextFragment();
     }
 
     @Override

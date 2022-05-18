@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.fragments;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
 import com.example.yatimjadid.Models.AllResolutionModels;
+import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
@@ -47,6 +46,8 @@ public class SecondFragment extends Fragment {
 
     AllResolutionModels allResolutionModels;
 
+    StartYatimCriteriaActivity ownerActivity;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -61,8 +62,11 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = getArguments();
-        allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
+        ownerActivity = (StartYatimCriteriaActivity) requireActivity();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+
+//        Bundle bundle = getArguments();
+//        allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
 
         binding.roomsNumberEd.addTextChangedListener(new TextWatcher() {
             @Override
@@ -81,12 +85,13 @@ public class SecondFragment extends Fragment {
                 roomsNumberStr = binding.roomsNumberEd.getText().toString();
                 memberNumberStr = binding.memberNumberEd.getText().toString();
 
-                if (!roomsNumberStr.isEmpty()&& !memberNumberStr.isEmpty()) {
+                if (!roomsNumberStr.isEmpty() && !memberNumberStr.isEmpty()) {
                     double roomsNum = Double.parseDouble(binding.roomsNumberEd.getText().toString());
                     double memberNum = Double.parseDouble(binding.memberNumberEd.getText().toString());
 
                     if (roomsNum > 0 && memberNum > 0) {
-                        peopleForRoomsStr = String.valueOf(Math.ceil(memberNum / roomsNum));
+                        int i = (int) Math.ceil(memberNum / roomsNum);
+                        peopleForRoomsStr = String.valueOf(i);
                         binding.peopleForRooms.setText(peopleForRoomsStr);
                     }
                 }
@@ -110,12 +115,13 @@ public class SecondFragment extends Fragment {
                 roomsNumberStr = binding.roomsNumberEd.getText().toString();
                 memberNumberStr = binding.memberNumberEd.getText().toString();
 
-                if (!roomsNumberStr.isEmpty()&& !memberNumberStr.isEmpty()) {
+                if (!roomsNumberStr.isEmpty() && !memberNumberStr.isEmpty()) {
                     double roomsNum = Double.parseDouble(binding.roomsNumberEd.getText().toString());
                     double memberNum = Double.parseDouble(binding.memberNumberEd.getText().toString());
 
                     if (roomsNum > 0 && memberNum > 0) {
-                        peopleForRoomsStr = String.valueOf(Math.ceil(memberNum / roomsNum));
+                        int i = (int) Math.ceil(memberNum / roomsNum);
+                        peopleForRoomsStr = String.valueOf(i);
                         binding.peopleForRooms.setText(peopleForRoomsStr);
                     }
                 }
@@ -417,6 +423,14 @@ public class SecondFragment extends Fragment {
             }
         });
 
+        binding.backFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((StartYatimCriteriaActivity) requireActivity()).prevFragment();
+                ownerActivity.prevFragment();
+            }
+        });
+
         binding.nextSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -424,6 +438,18 @@ public class SecondFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.allResolutionModels = allResolutionModels;
     }
 
     public void checkYatimHousingCondition() {
@@ -437,186 +463,187 @@ public class SecondFragment extends Fragment {
         if (housingTypeSpinnerStr.isEmpty()) {
             hasError = true;
             System.out.println("Log housingTypeSpinnerStr hasError");
-        }else {
+        } else {
             allResolutionModels.setHousingTypeSpinner(housingTypeSpinnerStr);
         }
 
         if (binding.roomsNumberEd.getText().toString().isEmpty()) {
             hasError = true;
             System.out.println("Log roomsNumberStr hasError");
-        }else {
+        } else {
             allResolutionModels.setRoomsNumber(String.valueOf(roomsNumberStr));
         }
 
         if (spaceStr.isEmpty()) {
             hasError = true;
             System.out.println("Log spaceStr hasError");
-        }else {
+        } else {
             allResolutionModels.setSpace(spaceStr);
         }
 
         if (propertySpinnerStr.isEmpty()) {
             hasError = true;
             System.out.println("Log propertySpinnerStr hasError");
-        }else {
+        } else {
             allResolutionModels.setPropertySpinner(propertySpinnerStr);
         }
 
         if (roofTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log roofTypeStr hasError");
-        }else {
+        } else {
             allResolutionModels.setRoofType(roofTypeStr);
         }
 
         if (wallTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log wallTypeStr hasError");
-        }else {
+        } else {
             allResolutionModels.setWallType(wallTypeStr);
         }
 
         if (floorTypeStr.isEmpty()) {
             hasError = true;
             System.out.println("Log floorTypeStr hasError");
-        }else {
-
+        } else {
+            allResolutionModels.setFloorType(floorTypeStr);
         }
 
         if (windowsCaseStr.isEmpty()) {
             hasError = true;
             System.out.println("Log windowsCaseStr hasError");
-        }else {
-
+        } else {
+            allResolutionModels.setWindowsCase(windowsCaseStr);
         }
 
         if (doorsCaseStr.isEmpty()) {
             hasError = true;
             System.out.println("Log doorsCaseStr hasError");
-        }else {
+        } else {
             allResolutionModels.setDoorsCase(doorsCaseStr);
         }
 
         if (kitchenConditionStr.isEmpty()) {
             hasError = true;
             System.out.println("Log kitchenConditionStr hasError");
-        }else {
+        } else {
             allResolutionModels.setKitchenCondition(kitchenConditionStr);
         }
 
         if (bathroomConditionStr.isEmpty()) {
             hasError = true;
             System.out.println("Log bathroomConditionStr hasError");
-        }else {
+        } else {
             allResolutionModels.setBathroomCondition(bathroomConditionStr);
         }
 
         if (housingConditionInGeneralStr.isEmpty()) {
             hasError = true;
             System.out.println("Log housingConditionInGeneralStr hasError");
-        }else {
+        } else {
             allResolutionModels.setHousingConditionInGeneral(housingConditionInGeneralStr);
         }
 
         if (improvementNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log improvementNeedsStr hasError");
-        }else {
+        } else {
             allResolutionModels.setImprovementNeeds(improvementNeedsStr);
         }
 
         if (furnitureNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log furnitureNeedsStr hasError");
-        }else {
+        } else {
             allResolutionModels.setFurnitureNeeds(furnitureNeedsStr);
         }
 
         if (hardwareNeedsStr.isEmpty()) {
             hasError = true;
             System.out.println("Log hardwareNeedsStr hasError");
-        }else {
+        } else {
             allResolutionModels.setHardwareNeeds(hardwareNeedsStr);
         }
 
         if (lightingSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log lightingSelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setLightingSelected(lightingSelectedStr);
         }
 
         if (String.valueOf(memberNumberStr).isEmpty()) {
             hasError = true;
             System.out.println("Log peopleForRoomsStr hasError");
-        }else {
+        } else {
             allResolutionModels.setMemberNumber(String.valueOf(memberNumberStr));
         }
 
         if (housingLocationStr.isEmpty()) {
             hasError = true;
             System.out.println("Log houseLocationStr hasError");
-        }else {
+        } else {
             allResolutionModels.setHouseLocation(housingLocationStr);
         }
 
         if (String.valueOf(roomsNumberStr).isEmpty()) {
             hasError = true;
             System.out.println("Log memberNumberStr hasError");
-        }else {
-
+        } else {
+            allResolutionModels.setRoomsNumber(roomsNumberStr);
         }
 
         if (ventilationSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log ventilationSelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setVentilationSelected(ventilationSelectedStr);
         }
 
         if (electricitySelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log electricitySelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setElectricitySelected(electricitySelectedStr);
         }
 
         if (waterNetworkSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log waterNetworkSelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setWaterNetworkSelected(waterNetworkSelectedStr);
         }
 
         if (alternativeElectricitySelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log alternativeElectricitySelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setAlternativeElectricitySelected(alternativeElectricitySelectedStr);
         }
 
         if (sewageSelectedStr.isEmpty()) {
             hasError = true;
             System.out.println("Log sewageSelectedStr hasError");
-        }else {
+        } else {
             allResolutionModels.setSewageSelected(sewageSelectedStr);
         }
 
         if (hasError) {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
-        }else {
-
         }
         allResolutionModels.setPeopleForRooms(peopleForRoomsStr);
-        allResolutionModels.setPeopleForRooms(peopleForRoomsStr);
+//        allResolutionModels.setPeopleForRooms(peopleForRoomsStr);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);
 
-        NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_WaterHygieneFragment, bundle);
+//        NavHostFragment.findNavController(SecondFragment.this)
+//                .navigate(R.id.action_SecondFragment_to_WaterHygieneFragment, bundle);
 
+//        ((StartYatimCriteriaActivity) requireActivity()).nextFragment();
+
+        ownerActivity.nextFragment();
     }
 
     @Override

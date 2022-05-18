@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,14 +9,20 @@ import android.view.ViewGroup;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yatimjadid.Adapter.FamilyMemberAdapter;
+import com.example.yatimjadid.AddFamilyMemberActivity;
+import com.example.yatimjadid.Constants;
+import com.example.yatimjadid.DataCallBack;
 import com.example.yatimjadid.Models.AllResolutionModels;
 import com.example.yatimjadid.Models.FamilyMembersModel;
+import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
+import com.example.yatimjadid.UtiltApp;
 import com.example.yatimjadid.databinding.FragmentFamilyMembersBinding;
 
 import java.util.ArrayList;
@@ -32,6 +38,7 @@ public class FamilyMembersFragment extends Fragment {
     FamilyMemberAdapter adapter;
 //    View toolbarAddBtn;
 
+    StartYatimCriteriaActivity ownerActivity;
 
     ActivityResultLauncher<Intent> addMemberLaunch = null;
 
@@ -74,12 +81,16 @@ public class FamilyMembersFragment extends Fragment {
             }
         });
 
-        Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
-            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
-        } else {
-            allResolutionModels = new AllResolutionModels();
-        }
+        ownerActivity = (StartYatimCriteriaActivity) requireActivity();
+
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+
+//        Bundle bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_YATIM_MODEL)) {
+//            allResolutionModels = (AllResolutionModels) bundle.getSerializable(Constants.KEY_YATIM_MODEL);
+//        } else {
+//            allResolutionModels = new AllResolutionModels();
+//        }
 
         binding.rvFamily.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        FamilyMemberAdapter familyMemberAdapter= new FamilyMemberAdapter(getActivity(), familyMembersArrayList);
@@ -139,12 +150,26 @@ public class FamilyMembersFragment extends Fragment {
 //                Bundle updateBundle = new Bundle();
 //                updateBundle.putSerializable(Constants.KEY_UPDATE_DATA, familyMembersModel);
 
-                NavHostFragment.findNavController(FamilyMembersFragment.this)
-                        .navigate(R.id.action_FamilyMembersFragment_to_AddYatimsFragment);
+//                NavHostFragment.findNavController(FamilyMembersFragment.this)
+//                        .navigate(R.id.action_FamilyMembersFragment_to_AddYatimsFragment);
+
+                ((StartYatimCriteriaActivity) requireActivity()).nextFragment();
             }
         });
 
         showHideToolbarAddButton();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.allResolutionModels = allResolutionModels;
     }
 
     @Override

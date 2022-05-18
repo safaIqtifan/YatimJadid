@@ -19,9 +19,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.yatimjadid.AddYatimActivity;
 import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentAddAttachmentsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,6 +43,7 @@ public class AddAttachmentsFragment extends Fragment {
     Map<String, Uri> photosUriMap;
     Bundle bundle;
     private ProgressDialog lodingBar;
+    AddYatimActivity ownerActivity;
 
     StorageReference storageRef;
     private static final int IMAGE_PICK_CODE = 1000;
@@ -52,6 +55,8 @@ public class AddAttachmentsFragment extends Fragment {
             PHOTO_GUARDIANSHIP = "photo_guardianship", PHOTO_SCHOOL_CERTIFICATE = "photo_school_certificate",
             PHOTO_SALARY_SLIP_IF_ANY = "photo_salary_slip_if_any";
     String photoType = null;
+
+    int completeUploadCount = 0;
 
     @Override
     public View onCreateView(
@@ -67,15 +72,18 @@ public class AddAttachmentsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lodingBar = new ProgressDialog(getActivity());
-
-        bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
-            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
-        }
+//        lodingBar = new ProgressDialog(getActivity());
+//
+//        bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
+//            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
+//        }
 //        else {
 //            yatimModel = new AddYatimModel();
 //        }
+
+        ownerActivity = (AddYatimActivity) requireActivity();
+        this.addYatimModel = ownerActivity.addYatimModel;
 
         storageRef = FirebaseStorage.getInstance().getReference();
         photosUriMap = new HashMap<>();
@@ -120,6 +128,14 @@ public class AddAttachmentsFragment extends Fragment {
             openPickPhoto();
         });
 
+        binding.backFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((StartYatimCriteriaActivity) requireActivity()).prevFragment();
+                ownerActivity.prevFragment();
+            }
+        });
+
         binding.nextSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,12 +146,31 @@ public class AddAttachmentsFragment extends Fragment {
                     // please select photo id
                     return;
                 }
-                for (String photoType : photosUriMap.keySet()) {
 
-//                    uploadPhoto(photoType, photosUriMap.get(photoType));
+//                Intent intent = new Intent();
+//                intent.putExtra(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//                requireActivity().setResult(Activity.RESULT_OK, intent);
+//                requireActivity().finish();
+
+                completeUploadCount = 0;
+                for (String photoType : photosUriMap.keySet()) {
+                    uploadPhoto(photoType, photosUriMap.get(photoType));
                 }
+
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.addYatimModel = ownerActivity.addYatimModel;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.addYatimModel = addYatimModel;
     }
 
     private void pickImageFromGallery() {
@@ -231,10 +266,10 @@ public class AddAttachmentsFragment extends Fragment {
 
     private void uploadPhoto(String photoType, Uri photoUri) {
 
-//        lodingBar.setTitle("جاري حفظ البيانات");
-//        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
-//        lodingBar.setCanceledOnTouchOutside(false);
-//        lodingBar.show();
+        lodingBar.setTitle("جاري حفظ البيانات");
+        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+        lodingBar.setCanceledOnTouchOutside(false);
+        lodingBar.show();
 
         StorageReference imgRef = storageRef.child(Constants.ATTACHMENTS_IMAGES + "/"
                 + UUID.randomUUID().toString());
@@ -248,9 +283,11 @@ public class AddAttachmentsFragment extends Fragment {
                 Toast.makeText(getActivity(), "فشل برفع الصور", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(taskSnapshot -> {
-            lodingBar.dismiss();
+            completeUploadCount++;
+//            if (completeUploadCount >= photosUriMap.size()) {
+//                lodingBar.dismiss();
+//            }
             imgRef.getDownloadUrl().addOnCompleteListener(task -> {
-                lodingBar.dismiss();
                 switch (photoType) {
                     case PHOTO_ID:
                         addYatimModel.setPhotoId(task.getResult().toString());
@@ -275,10 +312,18 @@ public class AddAttachmentsFragment extends Fragment {
                         break;
                 }
             });
-            bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+            if (completeUploadCount >= photosUriMap.size()) {
+                lodingBar.dismiss();
+                bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
 //            Toast.makeText(getActivity(), "123" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
-            NavHostFragment.findNavController(AddAttachmentsFragment.this)
-                    .navigate(R.id.action_AddAttachmentsFragment_to_AddYatimsFragment, bundle);
+//                NavHostFragment.findNavController(AddAttachmentsFragment.this)
+//                        .navigate(R.id.action_AddAttachmentsFragment_to_AddYatimsFragment, bundle);
+                Intent intent = new Intent();
+                intent.putExtra(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+                requireActivity().setResult(Activity.RESULT_OK, intent);
+                requireActivity().finish();
+            }
+
         });
     }
 

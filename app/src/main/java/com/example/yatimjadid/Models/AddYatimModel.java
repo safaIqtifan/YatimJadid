@@ -1,24 +1,37 @@
 package com.example.yatimjadid.Models;
 
 import java.io.Serializable;
+import java.util.List;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-
-public class AddYatimModel extends RealmObject implements Serializable {
+public class AddYatimModel implements Serializable {
 
     AllResolutionModels mainInfoModel = null;
+    List<FamilyMembersModel> familyMembersList = null;
 
-    public AllResolutionModels getMainInfoModel() {
-        return mainInfoModel;
-    }
+//    public AllResolutionModels getMainInfoModel() {
+//        return mainInfoModel;
+//    }
 
     public void setMainInfoModel(AllResolutionModels mainInfoModel) {
         this.mainInfoModel = mainInfoModel;
+//        this.id = mainInfoModel.id;
+//        this.mainInfoModelJson = new Gson().toJson(mainInfoModel);
     }
 
-    RealmList<AllResolutionModels> allResolutionModelsRealmList;
-    RealmList<FamilyMembersModel> familyMembersModelRealmList;
+    public void setFamilyMembersList(List<FamilyMembersModel> list) {
+        this.familyMembersList = list;
+//        this.id = mainInfoModel.id;
+//        this.familyMembersListJson = new Gson().toJson(list);
+    }
+
+//    public void setFamilyMembersListJson(List<FamilyMembersModel> list) {
+////        this.mainInfoModel = mainInfoModel;
+////        this.id = mainInfoModel.id;
+//        this.familyMembersListJson = new Gson().toJson(list);
+//    }
+
+//    String mainInfoModelJson = "";
+//    String familyMembersListJson = "";
 
     String YatimPhotoUri = "";
     String yatimName = "";
@@ -201,6 +214,7 @@ public class AddYatimModel extends RealmObject implements Serializable {
     public void setInheritanceOrPension(String inheritanceOrPension) {
         this.inheritanceOrPension = inheritanceOrPension;
     }
+
     public String getMobileNumber() {
         return mobileNumber;
     }

@@ -11,6 +11,8 @@
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/button_login_as.xml" value="0.123" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/buttonlogin.xml" value="0.123" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/gray_add.xml" value="0.138" />
+        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/next_btn.xml" value="0.1345" />
+        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/prev_btn.xml" value="0.1345" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/profile.xml" value="0.123" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/ring.xml" value="0.1725" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/drawable/spinner_bg.xml" value="0.141" />
@@ -22,6 +24,7 @@
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/activity_signin.xml" value="0.2" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/activity_splash_screen.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/activity_start_yatim_criteria.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/activity_yatims.xml" value="0.2" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/content_home.xml" value="0.21" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/family_member_item.xml" value="0.2" />
@@ -31,10 +34,10 @@
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_family_member_data.xml" value="0.25" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_family_members.xml" value="0.19" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_first.xml" value="0.22" />
-        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_new_yatims.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_new_yatims.xml" value="0.22" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_second.xml" value="0.22" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_ss.xml" value="0.1675213675213675" />
-        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_water_hygiene.xml" value="0.25" />
+        <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_water_hygiene.xml" value="0.22" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_yatim_desires_inclinations.xml" value="0.2" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_yatim_educational_status.xml" value="0.22" />
         <entry key="..\:/Users/safa/StudioProjects/YatimJadid/app/src/main/res/layout/fragment_yatim_health_condition.xml" value="0.25" />

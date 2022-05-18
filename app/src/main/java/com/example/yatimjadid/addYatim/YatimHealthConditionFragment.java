@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.yatimjadid.AddYatimActivity;
 import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentYatimHealthConditionBinding;
 
 public class YatimHealthConditionFragment extends Fragment {
@@ -34,6 +36,7 @@ public class YatimHealthConditionFragment extends Fragment {
     String yatimNeedsStr = "";
 
     AddYatimModel addYatimModel;
+    AddYatimActivity ownerActivity;
 
     @Override
     public View onCreateView(
@@ -49,11 +52,14 @@ public class YatimHealthConditionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL))
-            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
+//        Bundle bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL))
+//            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
 //        else
 //            addYatimModel = new AddYatimModel();
+
+        ownerActivity = (AddYatimActivity) requireActivity();
+        this.addYatimModel = ownerActivity.addYatimModel;
 
         binding.bodyHealth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -230,13 +236,32 @@ public class YatimHealthConditionFragment extends Fragment {
             }
         });
 
+        binding.backFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((StartYatimCriteriaActivity) requireActivity()).prevFragment();
+                ownerActivity.prevFragment();
+            }
+        });
 
-        binding.nextHealthFragment.setOnClickListener(new View.OnClickListener() {
+        binding.nextSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkYatimHousingCondition();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.addYatimModel = ownerActivity.addYatimModel;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.addYatimModel = addYatimModel;
     }
 
     public void checkYatimHousingCondition() {
@@ -337,10 +362,12 @@ public class YatimHealthConditionFragment extends Fragment {
             return;
         }
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-        NavHostFragment.findNavController(YatimHealthConditionFragment.this)
-                .navigate(R.id.action_YatimHealthConditionFragment_to_YatimEducationalStatusFragment, bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//        NavHostFragment.findNavController(YatimHealthConditionFragment.this)
+//                .navigate(R.id.action_YatimHealthConditionFragment_to_YatimEducationalStatusFragment, bundle);
+
+        ownerActivity.nextFragment();
 
     }
 

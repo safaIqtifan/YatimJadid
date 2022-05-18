@@ -1,4 +1,4 @@
-package com.example.yatimjadid;
+package com.example.yatimjadid.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.yatimjadid.Constants;
+import com.example.yatimjadid.MainActivity;
 import com.example.yatimjadid.Models.AllResolutionModels;
+import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentFirstBinding;
 
 import android.app.DatePickerDialog;
@@ -35,6 +39,8 @@ public class FirstFragment extends Fragment {
     String universityEducationStr;
     AllResolutionModels allResolutionModels;
 
+    StartYatimCriteriaActivity ownerActivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -46,8 +52,27 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        allResolutionModels = new AllResolutionModels();
+        ownerActivity = (StartYatimCriteriaActivity) requireActivity();
 
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+
+        initListeners();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.allResolutionModels = ownerActivity.allResolutionModels;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.allResolutionModels = allResolutionModels;
+    }
+
+    private void initListeners() {
         binding.guardianOfTheOrphanRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -99,7 +124,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i > 0)
-                maritalStatusStr = binding.maritalStatus.getSelectedItem().toString();
+                    maritalStatusStr = binding.maritalStatus.getSelectedItem().toString();
                 else
                     maritalStatusStr = "";
 
@@ -125,7 +150,7 @@ public class FirstFragment extends Fragment {
                         binding.specializationTextInputLayout.setVisibility(View.GONE);
                         binding.specializationInfo.setVisibility(View.GONE);
                     }
-                }else
+                } else
                     educationalLevelStr = "";
 //                allResolutionModels.setEducationalLevel(String.valueOf(i));
 //                binding.educationalLevel.setSelection(i);
@@ -142,7 +167,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i > 0)
-                universityEducationStr = binding.universityEducation.getSelectedItem().toString();
+                    universityEducationStr = binding.universityEducation.getSelectedItem().toString();
                 else
                     universityEducationStr = "";
             }
@@ -173,7 +198,6 @@ public class FirstFragment extends Fragment {
                 checkYatimParentsData();
             }
         });
-
     }
 
     public void checkYatimParentsData() {
@@ -197,25 +221,25 @@ public class FirstFragment extends Fragment {
 
             if (refugeeSelectedStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
             }
 
             if (motherNameStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setMotherName(motherNameStr);
             }
 
             if (motherDateOfBirthStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setMotherDateOfBirth(motherDateOfBirthStr);
             }
 
             if (maritalStatusStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setMaritalStatus(maritalStatusStr);
             }
 
@@ -224,25 +248,25 @@ public class FirstFragment extends Fragment {
 
                 if (universityEducationStr.isEmpty()) {
                     hasError = true;
-                }else {
+                } else {
                     allResolutionModels.setUniversityEducation(universityEducationStr);
                 }
 
                 if (specializationStr.isEmpty()) {
                     hasError = true;
-                }else {
+                } else {
                     allResolutionModels.setSpecialization(specializationStr);
                 }
 
                 if (graduationYearStr.isEmpty()) {
                     hasError = true;
-                }else {
+                } else {
                     allResolutionModels.setGraduationYear(graduationYearStr);
                 }
 
                 if (averageStr.isEmpty()) {
                     hasError = true;
-                }else {
+                } else {
                     allResolutionModels.setAverage(averageStr);
                 }
 
@@ -255,31 +279,31 @@ public class FirstFragment extends Fragment {
 
             if (refugeeSelectedStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setRefugeeSelected(refugeeSelectedStr);
             }
 
             if (parentsNameStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setParentsName(parentsNameStr);
             }
 
             if (parentsIdStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setParentsId(parentsIdStr);
             }
 
             if (parentsDateOfBirthStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setParentsDateOfBirth(parentsDateOfBirthStr);
             }
 
             if (relationshipWithTheOrphanStr.isEmpty()) {
                 hasError = true;
-            }else {
+            } else {
                 allResolutionModels.setRelationshipWithTheOrphan(relationshipWithTheOrphanStr);
             }
 //            allResolutionModels.setGuardianOfTheOrphanSelected(guardianOfTheOrphanStr);
@@ -292,8 +316,10 @@ public class FirstFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.KEY_YATIM_MODEL, allResolutionModels);
 
-        NavHostFragment.findNavController(FirstFragment.this)
-                .navigate(R.id.action_FirstFragment_to_SecondFragment, bundle);
+//        NavHostFragment.findNavController(FirstFragment.this)
+//                .navigate(R.id.action_FirstFragment_to_SecondFragment, bundle);
+
+        ownerActivity.nextFragment();
 
     }
 

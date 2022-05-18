@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.yatimjadid.AddYatimActivity;
 import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.R;
+import com.example.yatimjadid.StartYatimCriteriaActivity;
 import com.example.yatimjadid.databinding.FragmentYatimDesiresInclinationsBinding;
 
 public class YatimDesiresInclinationsFragment extends Fragment {
@@ -27,6 +29,7 @@ public class YatimDesiresInclinationsFragment extends Fragment {
     String responsibilitiesSelectedStr = "";
 
     AddYatimModel addYatimModel;
+    AddYatimActivity ownerActivity;
 
     @Override
     public View onCreateView(
@@ -42,11 +45,14 @@ public class YatimDesiresInclinationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL))
-            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
+//        Bundle bundle = getArguments();
+//        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL))
+//            addYatimModel = (AddYatimModel) bundle.getSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL);
 //        else
-//            addYatimModel = new AddYatimModel();
+//            addYatimModel = new AddYatimModel();.
+
+        ownerActivity = (AddYatimActivity) requireActivity();
+        this.addYatimModel = ownerActivity.addYatimModel;
 
         binding.talent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -132,6 +138,17 @@ public class YatimDesiresInclinationsFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.addYatimModel = ownerActivity.addYatimModel;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.addYatimModel = addYatimModel;
+    }
     public void checkYatimHousingCondition() {
 
         String favoriteFoodStr = binding.favoriteFood.getText().toString();
@@ -191,11 +208,11 @@ public class YatimDesiresInclinationsFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.please_fill_data), Toast.LENGTH_SHORT).show();
             return;
         }
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-        NavHostFragment.findNavController(YatimDesiresInclinationsFragment.this)
-                .navigate(R.id.action_YatimDesiresInclinationsFragment_to_AddAttachmentsFragment, bundle);
+        ownerActivity.nextFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//        NavHostFragment.findNavController(YatimDesiresInclinationsFragment.this)
+//                .navigate(R.id.action_YatimDesiresInclinationsFragment_to_AddAttachmentsFragment, bundle);
     }
 
     @Override

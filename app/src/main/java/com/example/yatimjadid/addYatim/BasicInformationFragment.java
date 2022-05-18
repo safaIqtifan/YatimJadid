@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.yatimjadid.AddYatimActivity;
 import com.example.yatimjadid.Constants;
 import com.example.yatimjadid.Models.AddYatimModel;
 import com.example.yatimjadid.R;
@@ -46,18 +47,20 @@ public class BasicInformationFragment extends Fragment {
 
     Uri yatimPhotoUri;
     String yatimGenderSelectedStr = "";
-//    String governorateStr = "";
+    //    String governorateStr = "";
     AddYatimModel addYatimModel;
     String age;
     String cityStr;
     String areaStr;
-//    String ageAtDeath;
+    //    String ageAtDeath;
     //    ArrayAdapter<String> ArrayAdapter;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     StorageReference storageRef;
 
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
+
+    AddYatimActivity ownerActivity;
 
     @Override
     public View onCreateView(
@@ -74,13 +77,28 @@ public class BasicInformationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         storageRef = FirebaseStorage.getInstance().getReference();
-        addYatimModel = new AddYatimModel();
+//        addYatimModel = new AddYatimModel();
+
+        ownerActivity = (AddYatimActivity) requireActivity();
+        this.addYatimModel = ownerActivity.addYatimModel;
 
         initListeners();
-
         getCity();
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.addYatimModel = ownerActivity.addYatimModel;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ownerActivity.addYatimModel = addYatimModel;
+    }
+
 
     private void initListeners() {
 
@@ -182,10 +200,18 @@ public class BasicInformationFragment extends Fragment {
             }
         });
 
-        binding.nextBasicInfoFragment.setOnClickListener(new View.OnClickListener() {
+        binding.nextSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkYatimHousingCondition();
+            }
+        });
+
+        binding.backFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((StartYatimCriteriaActivity) requireActivity()).prevFragment();
+                ownerActivity.prevFragment();
             }
         });
 
@@ -228,6 +254,7 @@ public class BasicInformationFragment extends Fragment {
                     binding.areaSpinnerLY.setVisibility(View.GONE);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -241,6 +268,7 @@ public class BasicInformationFragment extends Fragment {
                 else
                     areaStr = "";
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -265,67 +293,67 @@ public class BasicInformationFragment extends Fragment {
 
         if (yatimPhotoUri == null) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setYatimPhotoUri(String.valueOf(yatimPhotoUri));
         }
         if (yatimNameStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setYatimName(yatimNameStr);
         }
         if (yatimDateOfBirthStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setYatimDateOfBirth(yatimDateOfBirthStr);
         }
         if (yatimGenderSelectedStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setYatimGenderSelected(yatimGenderSelectedStr);
         }
         if (fatherDeathDateStr.isEmpty() && fatherBirthDateStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setFatherDeathDate(fatherDeathDateStr);
         }
         if (causeOfDeathStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setCauseOfDeath(causeOfDeathStr);
         }
         if (ageAtDeathStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setAgeAtDeath(ageAtDeathStr);
         }
         if (fatherJobStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setFatherJob(fatherJobStr);
         }
         if (previousIncomeStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setPreviousIncome(previousIncomeStr);
         }
         if (inheritanceOrPensionStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setInheritanceOrPension(inheritanceOrPensionStr);
         }
         if (cityStr.isEmpty()) {
             hasError = true;
-        }else {
-           addYatimModel.setCity(cityStr);
+        } else {
+            addYatimModel.setCity(cityStr);
         }
         if (areaStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setArea(areaStr);
         }
         if (mobileNumberStr.isEmpty()) {
             hasError = true;
-        }else {
+        } else {
             addYatimModel.setMobileNumber(mobileNumberStr);
         }
 
@@ -343,10 +371,13 @@ public class BasicInformationFragment extends Fragment {
 
         addYatimModel.setYatimeAge(age);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
-        NavHostFragment.findNavController(BasicInformationFragment.this)
-                .navigate(R.id.action_BasicInformationFragment_to_YatimHealthConditionFragment, bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//        NavHostFragment.findNavController(BasicInformationFragment.this)
+//                .navigate(R.id.action_BasicInformationFragment_to_YatimHealthConditionFragment, bundle);
+
+        ownerActivity.nextFragment();
+
     }
 
     private void pickImageFromGallery() {
