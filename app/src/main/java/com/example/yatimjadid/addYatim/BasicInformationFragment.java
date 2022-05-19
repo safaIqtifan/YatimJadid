@@ -50,8 +50,8 @@ public class BasicInformationFragment extends Fragment {
     //    String governorateStr = "";
     AddYatimModel addYatimModel;
     String age;
-    String cityStr;
-    String areaStr;
+    String cityStr = "";
+    String areaStr = "";
     //    String ageAtDeath;
     //    ArrayAdapter<String> ArrayAdapter;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -195,8 +195,10 @@ public class BasicInformationFragment extends Fragment {
         binding.addMobileNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutEdittextBinding newMobileET = LayoutEdittextBinding.inflate(getLayoutInflater());
-                binding.dataLY.addView(newMobileET.getRoot());
+//                LayoutEdittextBinding newMobileET = LayoutEdittextBinding.inflate(getLayoutInflater());
+//                binding.dataLY.addView(newMobileET.getRoot());
+//                newMobileET.getRoot().setInputType(0);
+                binding.mobileNumber2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -218,6 +220,11 @@ public class BasicInformationFragment extends Fragment {
         binding.citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i > 0)
+                    cityStr = binding.citySpinner.getSelectedItem().toString();
+                else
+                    cityStr = "";
+
                 if (i > 0) {
                     int areaListId = 0;
                     switch (i) {
@@ -237,11 +244,6 @@ public class BasicInformationFragment extends Fragment {
                             areaListId = R.array.rafah_list;
                             break;
                     }
-
-                    if (i > 0)
-                        cityStr = binding.citySpinner.getSelectedItem().toString();
-                    else
-                        cityStr = "";
 
                     String[] areaList = requireActivity().getResources().getStringArray(areaListId);
                     if (areaList.length > 0) {

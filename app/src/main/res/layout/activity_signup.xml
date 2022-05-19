@@ -131,37 +131,38 @@
                     android:text="@string/signup"
                     android:textSize="18sp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:id="@+id/haveanaccount"
+                <LinearLayout
+                    android:id="@+id/linear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/already_have_an_account"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-                <TextView
-                    android:id="@+id/logintoaccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/login_to_account"
-                    android:textColor="@color/teal_200"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/haveanaccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/already_have_an_account"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/logintoaccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="@string/login_to_account"
+                        android:textColor="@color/teal_200"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

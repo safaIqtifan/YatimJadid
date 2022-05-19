@@ -72,7 +72,7 @@ public class AddAttachmentsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        lodingBar = new ProgressDialog(getActivity());
+        lodingBar = new ProgressDialog(getActivity());
 //
 //        bundle = getArguments();
 //        if (bundle != null && bundle.containsKey(Constants.KEY_NEW_YATIM_DATA_MODEL)) {
@@ -244,7 +244,7 @@ public class AddAttachmentsFragment extends Fragment {
                 selectedImageView.setImageURI(photoUri);
             selectedImageView.setVisibility(View.VISIBLE);
 
-//            photosUriMap.put(photoType, photoUri);
+            photosUriMap.put(photoType, photoUri);
 
         }
     }
@@ -267,7 +267,7 @@ public class AddAttachmentsFragment extends Fragment {
     private void uploadPhoto(String photoType, Uri photoUri) {
 
         lodingBar.setTitle("جاري حفظ البيانات");
-        lodingBar.setMessage("الرجاء الانتظار حتي يتم حفظ البيانات");
+        lodingBar.setMessage("الرجاء الانتظار حتي يتم الانتهاء من حفظ البيانات");
         lodingBar.setCanceledOnTouchOutside(false);
         lodingBar.show();
 
@@ -284,9 +284,9 @@ public class AddAttachmentsFragment extends Fragment {
             }
         }).addOnSuccessListener(taskSnapshot -> {
             completeUploadCount++;
-//            if (completeUploadCount >= photosUriMap.size()) {
-//                lodingBar.dismiss();
-//            }
+            if (completeUploadCount >= photosUriMap.size()) {
+                lodingBar.dismiss();
+            }
             imgRef.getDownloadUrl().addOnCompleteListener(task -> {
                 switch (photoType) {
                     case PHOTO_ID:
@@ -314,7 +314,8 @@ public class AddAttachmentsFragment extends Fragment {
             });
             if (completeUploadCount >= photosUriMap.size()) {
                 lodingBar.dismiss();
-                bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+//                bundle.putSerializable(Constants.KEY_NEW_YATIM_DATA_MODEL, addYatimModel);
+
 //            Toast.makeText(getActivity(), "123" + addYatimModel.getYatimName(), Toast.LENGTH_SHORT).show();
 //                NavHostFragment.findNavController(AddAttachmentsFragment.this)
 //                        .navigate(R.id.action_AddAttachmentsFragment_to_AddYatimsFragment, bundle);

@@ -88,35 +88,37 @@
             android:text="@string/forgot_password"
             android:textColor="@color/green"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/don_not_have_account"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/don_not_have_an_account"
-            android:textSize="12sp" />
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/create_new_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:text="@string/create_new_now"
-            android:textColor="@color/teal_200"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/don_not_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/don_not_have_an_account"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/create_new_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:text="@string/create_new_now"
+                android:textColor="@color/teal_200"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
